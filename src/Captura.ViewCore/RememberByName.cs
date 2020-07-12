@@ -13,7 +13,6 @@ namespace Captura.Models
         readonly VideoSourcesViewModel _videoSourcesViewModel;
         readonly VideoWritersViewModel _videoWritersViewModel;
         readonly AudioSourceViewModel _audioSourceViewModel;
-        readonly WebcamModel _webcamModel;
         readonly ScreenShotModel _screenShotModel;
         readonly IEnumerable<IVideoSourceProvider> _videoSourceProviders;
 
@@ -22,8 +21,7 @@ namespace Captura.Models
             VideoWritersViewModel VideoWritersViewModel,
             AudioSourceViewModel AudioSourceViewModel,
             ScreenShotModel ScreenShotModel,
-            IEnumerable<IVideoSourceProvider> VideoSourceProviders,
-            WebcamModel WebcamModel)
+            IEnumerable<IVideoSourceProvider> VideoSourceProviders)
         {
             _settings = Settings;
             _videoSourcesViewModel = VideoSourcesViewModel;
@@ -31,7 +29,6 @@ namespace Captura.Models
             _audioSourceViewModel = AudioSourceViewModel;
             _screenShotModel = ScreenShotModel;
             _videoSourceProviders = VideoSourceProviders;
-            _webcamModel = WebcamModel;
         }
 
         public void Remember()
@@ -55,7 +52,7 @@ namespace Captura.Models
                 .ToString();
 
             // Remember Post Writer
-            _settings.Video.PostWriter = _videoWritersViewModel.SelectedPostWriter.ToString();
+            //_settings.Video.PostWriter = _videoWritersViewModel.SelectedPostWriter.ToString();
 
             // Remember Audio Sources
             _settings.Audio.Microphone = _audioSourceViewModel.SelectedMicrophone?.Name;
@@ -68,11 +65,6 @@ namespace Captura.Models
                 .Where(M => M.Active)
                 .Select(M => M.Display)
                 .ToArray();
-
-            // Remember Webcam
-            _settings.Video.Webcam = _webcamModel
-                .SelectedCam
-                .Name;
 
             // Remember Steps writer
             _settings.Steps.Writer = _videoWritersViewModel
@@ -158,19 +150,6 @@ namespace Captura.Models
                 if (!_screenShotModel.AvailableImageWriters.Any(M => M.Active))
                 {
                     _screenShotModel.AvailableImageWriters[0].Active = true;
-                }
-            }
-
-            // Restore Webcam
-            if (!string.IsNullOrEmpty(_settings.Video.Webcam))
-            {
-                var webcam = _webcamModel
-                    .AvailableCams
-                    .FirstOrDefault(C => C.Name == _settings.Video.Webcam);
-
-                if (webcam != null)
-                {
-                    _webcamModel.SelectedCam = webcam;
                 }
             }
 

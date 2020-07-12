@@ -37,7 +37,6 @@ namespace Captura.ViewModels
         public RecordingViewModel(RecordingModel RecordingModel,
             Settings Settings,
             TimerModel TimerModel,
-            WebcamModel WebcamModel,
             VideoSourcesViewModel VideoSourcesViewModel,
             VideoWritersViewModel VideoWritersViewModel,
             ISystemTray SystemTray,
@@ -73,9 +72,6 @@ namespace Captura.ViewModels
             RecordCommand = new[]
                 {
                     hasAudio,
-                    WebcamModel
-                        .ObserveProperty(M => M.SelectedCam)
-                        .Select(M => M is NoWebcamItem),
                     Settings
                         .Video
                         .ObserveProperty(M => M.RecorderMode)
@@ -87,9 +83,8 @@ namespace Captura.ViewModels
                 .CombineLatest(M =>
                 {
                     var audioEnabled = M[0];
-                    var noWebcam = M[1];
-                    var stepsMode = M[2];
-                    var supportsStepsMode = M[3];
+                    var stepsMode = M[1];
+                    var supportsStepsMode = M[2];
 
                     if (stepsMode)
                         return supportsStepsMode;

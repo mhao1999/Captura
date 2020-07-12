@@ -57,15 +57,6 @@ namespace Captura.ViewModels
                 .Select(M => !M)
                 .ToReadOnlyReactivePropertySlim();
 
-            StepsBtnEnabled = new[]
-                {
-                    IsEnabled,
-                    VideoSourcesViewModel
-                        .ObserveProperty(M => M.SelectedVideoSourceKind)
-                        .Select(M => M.SupportsStepsMode)
-                }
-                .CombineLatestValuesAreAllTrue()
-                .ToReadOnlyReactivePropertySlim();
         }
 
         public IReadOnlyReactiveProperty<bool> StepsBtnEnabled { get; }

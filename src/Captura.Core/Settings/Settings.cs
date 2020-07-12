@@ -74,8 +74,6 @@ namespace Captura
 
         public ProxySettings Proxy { get; } = new ProxySettings();
 
-        public WebcamOverlaySettings WebcamOverlay { get; set; } = new WebcamOverlaySettings();
-
         public MouseOverlaySettings MousePointerOverlay { get; set; } = new MouseOverlaySettings
         {
             Color = Color.FromArgb(200, 239, 108, 0)

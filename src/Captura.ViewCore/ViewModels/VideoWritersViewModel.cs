@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System;
 using Captura.Video;
+using Captura.Windows.MediaFoundation;
 
 namespace Captura.ViewModels
 {

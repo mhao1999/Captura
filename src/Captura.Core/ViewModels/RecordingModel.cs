@@ -23,7 +23,6 @@ namespace Captura.ViewModels
 
         readonly ISystemTray _systemTray;
         readonly IPreviewWindow _previewWindow;
-        readonly WebcamModel _webcamModel;
         readonly TimerModel _timerModel;
         readonly IMessageProvider _messageProvider;
 
@@ -39,7 +38,6 @@ namespace Captura.ViewModels
             ISystemTray SystemTray,
             IPreviewWindow PreviewWindow,
             IAudioSource AudioSource,
-            WebcamModel WebcamModel,
             KeymapViewModel Keymap,
             TimerModel TimerModel,
             IMessageProvider MessageProvider,
@@ -48,7 +46,6 @@ namespace Captura.ViewModels
             _systemTray = SystemTray;
             _previewWindow = PreviewWindow;
             _audioSource = AudioSource;
-            _webcamModel = WebcamModel;
             _keymap = Keymap;
             _timerModel = TimerModel;
             _messageProvider = MessageProvider;
@@ -324,19 +321,6 @@ namespace Captura.ViewModels
             }
 
             return true;
-        }
-
-        void SeparateFileForWebcam(RecordingModelParams RecordingParams)
-        {
-            var webcamImgProvider = new WebcamImageProvider(_webcamModel);
-
-            var webcamFileName = Path.ChangeExtension(CurrentFileName, $".webcam{Path.GetExtension(CurrentFileName)}");
-
-            var webcamVideoWriter = GetVideoFileWriter(webcamImgProvider, null, RecordingParams, webcamFileName);
-
-            var webcamRecorder = new Recorder(webcamVideoWriter, webcamImgProvider, Settings.Video.FrameRate);
-
-            _recorder = new MultiRecorder(_recorder, webcamRecorder);
         }
 
         void SeparateFileForEveryAudioSource(RecordingModelParams RecordingParams)
