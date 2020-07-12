@@ -78,11 +78,7 @@ namespace Captura
 
         static void BindVideoSourceProviders(IBinder Binder)
         {
-            Binder.BindAsInterfaceAndClass<IVideoSourceProvider, NoVideoSourceProvider>();
-            Binder.BindAsInterfaceAndClass<IVideoSourceProvider, AroundMouseSourceProvider>();
             Binder.BindAsInterfaceAndClass<IVideoSourceProvider, FullScreenSourceProvider>();
-            Binder.BindAsInterfaceAndClass<IVideoSourceProvider, ScreenSourceProvider>();
-            Binder.BindAsInterfaceAndClass<IVideoSourceProvider, WindowSourceProvider>();
             Binder.BindAsInterfaceAndClass<IVideoSourceProvider, RegionSourceProvider>();
         }
 

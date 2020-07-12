@@ -22,31 +22,10 @@ namespace Captura.ViewModels
                 .Select(M => M is RegionSourceProvider)
                 .ToReadOnlyReactivePropertySlim();
 
-            IsAudioMode = VideoSourcesViewModel
-                .ObserveProperty(M => M.SelectedVideoSourceKind)
-                .Select(M => M is NoVideoSourceProvider)
-                .ToReadOnlyReactivePropertySlim();
-
             IsStepsMode = Settings
                 .Video
                 .ObserveProperty(M => M.RecorderMode)
                 .Select(M => M == RecorderMode.Steps)
-                .ToReadOnlyReactivePropertySlim();
-
-            IsNotAudioOrStepsMode = new[]
-                {
-                    VideoSourcesViewModel
-                        .ObserveProperty(M => M.SelectedVideoSourceKind)
-                        .Select(M => M is NoVideoSourceProvider),
-                    IsStepsMode
-                }
-                .CombineLatest(M =>
-                {
-                    var audioMode = M[0];
-                    var stepsMode = M[1];
-
-                    return !audioMode && !stepsMode;
-                })
                 .ToReadOnlyReactivePropertySlim();
 
             MultipleVideoWriters = VideoWritersViewModel.AvailableVideoWriters
@@ -72,14 +51,9 @@ namespace Captura.ViewModels
                 .Select(M => M == RecorderState.NotRecording)
                 .ToReadOnlyReactivePropertySlim();
 
-            IsAroundMouseMode = VideoSourcesViewModel
-                .ObserveProperty(M => M.SelectedVideoSourceKind)
-                .Select(M => M is AroundMouseSourceProvider)
-                .ToReadOnlyReactivePropertySlim();
-
             ShowSourceNameBox = VideoSourcesViewModel
                 .ObserveProperty(M => M.SelectedVideoSourceKind)
-                .Select(M => M is RegionSourceProvider || M is AroundMouseSourceProvider)
+                .Select(M => M is RegionSourceProvider)
                 .Select(M => !M)
                 .ToReadOnlyReactivePropertySlim();
 
@@ -91,12 +65,6 @@ namespace Captura.ViewModels
                         .Select(M => M.SupportsStepsMode)
                 }
                 .CombineLatestValuesAreAllTrue()
-                .ToReadOnlyReactivePropertySlim();
-
-            FpsVisibility = RecordingModel.ObserveProperty(M => M.RecorderState)
-                .CombineLatest(IsNotAudioOrStepsMode,
-                    (RecorderState, IsNotAudioOrStepsMode) => RecorderState == RecorderState.Recording && IsNotAudioOrStepsMode)
-                .Select(M => M ? Visibility.Visible : Visibility.Hidden)
                 .ToReadOnlyReactivePropertySlim();
         }
 

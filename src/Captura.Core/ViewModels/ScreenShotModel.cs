@@ -133,10 +133,6 @@ namespace Captura.ViewModels
 
             switch (VideoSourceKind)
             {
-                case WindowSourceProvider winProvider when winProvider.Source is WindowItem windowItem:
-                    bmp = ScreenShotWindow(windowItem.Window);
-                    break;
-
                 case FullScreenSourceProvider _:
                     var hide = !SuppressHide && _mainWindow.IsVisible && _settings.UI.HideOnFullScreenShot;
 

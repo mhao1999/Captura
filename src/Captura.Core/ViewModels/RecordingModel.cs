@@ -225,12 +225,9 @@ namespace Captura.ViewModels
 
         public bool StartRecording(RecordingModelParams RecordingParams, string FileName = null)
         {
-            IsVideo = !(RecordingParams.VideoSourceKind is NoVideoSourceProvider);
+            IsVideo = true;
 
             var extension = RecordingParams.VideoWriter.Extension;
-
-            if (RecordingParams.VideoSourceKind?.Source is NoVideoItem x)
-                extension = x.Extension;
 
             CurrentFileName = Settings.GetFileName(extension, FileName);
 
@@ -257,15 +254,7 @@ namespace Captura.ViewModels
                         return false;
                     }
                 }
-                else if (RecordingParams.VideoSourceKind?.Source is NoVideoItem audioWriter)
-                {
-                    if (!InitAudioRecorder(audioWriter, audioProvider, RecordingParams))
-                    {
-                        audioProvider?.Dispose();
 
-                        return false;
-                    }
-                }
             }
 
 
@@ -417,16 +406,11 @@ namespace Captura.ViewModels
 
         IVideoFileWriter GetVideoFileWriterWithPreview(IImageProvider ImgProvider, IAudioProvider AudioProvider, RecordingModelParams RecordingParams)
         {
-            return RecordingParams.VideoSourceKind is NoVideoSourceProvider
-                ? null
-                : new WithPreviewWriter(GetVideoFileWriter(ImgProvider, AudioProvider, RecordingParams), _previewWindow);
+            return new WithPreviewWriter(GetVideoFileWriter(ImgProvider, AudioProvider, RecordingParams), _previewWindow);
         }
 
         IVideoFileWriter GetVideoFileWriter(IImageProvider ImgProvider, IAudioProvider AudioProvider, RecordingModelParams RecordingParams, string FileName = null)
         {
-            if (RecordingParams.VideoSourceKind is NoVideoSourceProvider)
-                return null;
-
             var args = new VideoWriterArgs
             {
                 FileName = FileName ?? CurrentFileName,

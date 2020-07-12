@@ -73,9 +73,6 @@ namespace Captura.ViewModels
             RecordCommand = new[]
                 {
                     hasAudio,
-                    VideoSourcesViewModel
-                        .ObserveProperty(M => M.SelectedVideoSourceKind)
-                        .Select(M => M is NoVideoSourceProvider),
                     WebcamModel
                         .ObserveProperty(M => M.SelectedCam)
                         .Select(M => M is NoWebcamItem),
@@ -90,16 +87,12 @@ namespace Captura.ViewModels
                 .CombineLatest(M =>
                 {
                     var audioEnabled = M[0];
-                    var audioOnlyMode = M[1];
-                    var noWebcam = M[2];
-                    var stepsMode = M[3];
-                    var supportsStepsMode = M[4];
+                    var noWebcam = M[1];
+                    var stepsMode = M[2];
+                    var supportsStepsMode = M[3];
 
                     if (stepsMode)
                         return supportsStepsMode;
-
-                    if (audioOnlyMode)
-                        return audioEnabled;
 
                     return true;
                 })

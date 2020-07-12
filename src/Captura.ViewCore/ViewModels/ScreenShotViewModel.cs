@@ -30,26 +30,6 @@ namespace Captura.ViewModels
             this.DiskWriter = DiskWriter;
             this.ClipboardWriter = ClipboardWriter;
 
-            ScreenShotCommand = new[]
-                {
-                    VideoSourcesViewModel
-                        .ObserveProperty(M => M.SelectedVideoSourceKind)
-                        .Select(M => M is NoVideoSourceProvider)
-                }
-                .CombineLatest(M =>
-                {
-                    var noVideo = M[0];
-
-                    return !noVideo;
-                })
-                .ToReactiveCommand()
-                .WithSubscribe(async M =>
-                {
-                    var bmp = await ScreenShotModel.GetScreenShot(VideoSourcesViewModel.SelectedVideoSourceKind);
-
-                    await ScreenShotModel.SaveScreenShot(bmp);
-                });
-
             async Task ScreenShotWindow(IWindow Window)
             {
                 var img = ScreenShotModel.ScreenShotWindow(Window);

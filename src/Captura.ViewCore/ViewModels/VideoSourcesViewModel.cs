@@ -8,16 +8,13 @@ namespace Captura.ViewModels
     {
         readonly FullScreenSourceProvider _fullScreenProvider;
         readonly Settings _settings;
-        public NoVideoSourceProvider NoVideoSourceProvider { get; }
 
         public IEnumerable<IVideoSourceProvider> VideoSources { get; }
 
         public VideoSourcesViewModel(FullScreenSourceProvider FullScreenProvider,
-            NoVideoSourceProvider NoVideoSourceProvider,
             IEnumerable<IVideoSourceProvider> SourceProviders,
             Settings Settings)
         {
-            this.NoVideoSourceProvider = NoVideoSourceProvider;
             _fullScreenProvider = FullScreenProvider;
             _settings = Settings;
             VideoSources = SourceProviders;

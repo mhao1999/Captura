@@ -18,17 +18,9 @@
                                       IconData="{Binding Icons.Video, Source={StaticResource ServiceLocator}}"
                                       CommandParameter="/Pages/VideoPage.xaml"/>
 
-                <captura:ModernButton Content="{Binding WebCam, Source={StaticResource Loc}, Mode=OneWay}"
-                                      IconData="{Binding Icons.Webcam, Source={StaticResource ServiceLocator}}"
-                                      CommandParameter="{Binding WebcamPage, Source={StaticResource ServiceLocator}}"/>
-
                 <captura:ModernButton Content="{Binding Audio, Source={StaticResource Loc}, Mode=OneWay}"
                                       IconData="{Binding Icons.Speaker, Source={StaticResource ServiceLocator}}"
                                       CommandParameter="/Pages/AudioPage.xaml"/>
-
-                <captura:ModernButton Content="{Binding ScreenShot, Source={StaticResource Loc}, Mode=OneWay}"
-                                      IconData="{Binding Icons.Region, Source={StaticResource ServiceLocator}}"
-                                      CommandParameter="/Pages/ScreenShotsPage.xaml"/>
 
                 <captura:ModernButton Content="{Binding Recent, Source={StaticResource Loc}, Mode=OneWay}"
                                       IconData="{Binding Icons.History, Source={StaticResource ServiceLocator}}"
@@ -38,17 +30,9 @@
                                       IconData="{Binding Icons.Window, Source={StaticResource ServiceLocator}}"
                                       CommandParameter="/Pages/InterfacePage.xaml"/>
 
-                <captura:ModernButton Content="FFmpeg"
-                                      IconData="{Binding Icons.VideoFile, Source={StaticResource ServiceLocator}}"
-                                      CommandParameter="/Pages/FFmpegPage.xaml"/>
-
                 <captura:ModernButton Content="{Binding Hotkeys, Source={StaticResource Loc}, Mode=OneWay}"
                                       IconData="{Binding Icons.Keyboard, Source={StaticResource ServiceLocator}}"
                                       CommandParameter="/Pages/HotkeysPage.xaml"/>
-
-                <captura:ModernButton Content="{Binding Proxy, Source={StaticResource Loc}, Mode=OneWay}"
-                                      IconData="{Binding Icons.Web, Source={StaticResource ServiceLocator}}"
-                                      CommandParameter="/Pages/ProxyPage.xaml"/>
 
                 <captura:ModernButton Content="{Binding FileNaming, Source={StaticResource Loc}, Mode=OneWay}"
                                       IconData="{Binding Icons.NewFile, Source={StaticResource ServiceLocator}}"
@@ -58,9 +42,6 @@
                                       IconData="{Binding Icons.Arrow, Source={StaticResource ServiceLocator}}"
                                       CommandParameter="{x:Static captura:OverlayPage.Instance}"/>
 
-                <captura:ModernButton Content="{Binding About, Source={StaticResource Loc}, Mode=OneWay}"
-                                      IconData="{Binding Icons.Help, Source={StaticResource ServiceLocator}}"
-                                      CommandParameter="/Pages/AboutPage.xaml"/>
             </WrapPanel>
         </ScrollViewer>
     </DockPanel>
