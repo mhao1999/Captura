@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Reactive.Linq;
 using System.Windows.Input;
-using Captura.FFmpeg;
 using Captura.Hotkeys;
 using Captura.Loc;
 using Captura.Video;
@@ -36,7 +35,6 @@ namespace Captura.ViewModels
             IPreviewWindow PreviewWindow,
             IDialogService DialogService,
             RecordingModel RecordingModel,
-            IFFmpegViewsProvider FFmpegViewsProvider,
             RememberByName RememberByName) : base(Settings, Loc)
         {
             _dialogService = DialogService;
@@ -50,18 +48,12 @@ namespace Captura.ViewModels
             ShowPreviewCommand = new ReactiveCommand()
                 .WithSubscribe(PreviewWindow.Show);
 
-            SelectFFmpegFolderCommand = new ReactiveCommand()
-                .WithSubscribe(FFmpegViewsProvider.PickFolder);
-
             #region Commands
             OpenOutputFolderCommand = new ReactiveCommand()
                 .WithSubscribe(OpenOutputFolder);
 
             SelectOutputFolderCommand = new ReactiveCommand()
                 .WithSubscribe(SelectOutputFolder);
-
-            ResetFFmpegFolderCommand = new ReactiveCommand()
-                .WithSubscribe(() => Settings.FFmpeg.FolderPath = "");
 
             TrayLeftClickCommand = new ReactiveCommand()
                 .WithSubscribe(() => HotKeyManager.FakeHotkey(Settings.Tray.LeftClickAction));

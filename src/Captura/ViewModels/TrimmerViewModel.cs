@@ -5,7 +5,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Threading;
-using Captura.FFmpeg;
 using Microsoft.Win32;
 using Reactive.Bindings;
 using Reactive.Bindings.Extensions;
@@ -248,13 +247,6 @@ namespace Captura
 
         async void Trim()
         {
-            if (!FFmpegService.FFmpegExists)
-            {
-                ServiceProvider.Get<IFFmpegViewsProvider>().ShowUnavailable();
-
-                return;
-            }
-
             var ext = Path.GetExtension(FilePath);
 
             var sfd = new SaveFileDialog
@@ -275,21 +267,6 @@ namespace Captura
             _player.Close();
 
             _isTrimming.Value = true;
-
-            var trimmer = new FFmpegTrimmer();
-
-            try
-            {
-                await trimmer.Run(FilePath,
-                    From,
-                    To,
-                    sfd.FileName,
-                    hasAudio);
-            }
-            finally
-            {
-                _isTrimming.Value = false;
-            }
 
             MessageBox.Show("Done");
         }

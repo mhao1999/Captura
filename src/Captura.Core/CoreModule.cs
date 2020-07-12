@@ -1,16 +1,13 @@
 ﻿using Captura.Models;
 using Captura.Audio;
-using Captura.FFmpeg;
 using Captura.Hotkeys;
-using Captura.Imgur;
 using Captura.Loc;
 using Captura.MouseKeyHook;
-using Captura.SharpAvi;
 using Captura.Video;
 using Captura.ViewModels;
 using Captura.Webcam;
 using Captura.Windows;
-using Captura.YouTube;
+
 
 namespace Captura
 {
@@ -21,8 +18,6 @@ namespace Captura
             Binder.Bind<IAudioWriterItem, WaveItem>();
 
             WindowsModule.Load(Binder);
-
-            FFmpegModule.Load(Binder);
 
             BindViewModels(Binder);
             BindSettings(Binder);
@@ -35,12 +30,8 @@ namespace Captura
             // Recent
             Binder.Bind<IRecentList, RecentListRepository>();
             Binder.Bind<IRecentItemSerializer, FileRecentSerializer>();
-            Binder.Bind<IRecentItemSerializer, UploadRecentSerializer>();
 
-            Binder.Bind<IImageUploader, ImgurUploader>();
             Binder.Bind<IIconSet, MaterialDesignIcons>();
-            Binder.Bind<IImgurApiKeys, ApiKeys>();
-            Binder.Bind<IYouTubeApiKeys, ApiKeys>();
 
             Binder.BindSingleton<HotKeyManager>();
 
@@ -58,7 +49,6 @@ namespace Captura
         {
             Binder.BindAsInterfaceAndClass<IImageWriterItem, DiskWriter>();
             Binder.BindAsInterfaceAndClass<IImageWriterItem, ClipboardWriter>();
-            Binder.BindAsInterfaceAndClass<IImageWriterItem, ImageUploadWriter>();
             Binder.BindAsInterfaceAndClass<IImageWriterItem, EditorWriter>();
         }
 
@@ -67,7 +57,6 @@ namespace Captura
             Binder.BindSingleton<TimerModel>();
             Binder.BindSingleton<ScreenShotModel>();
             Binder.BindSingleton<RecordingModel>();
-            Binder.BindSingleton<WebcamModel>();
             Binder.BindSingleton<KeymapViewModel>();
         }
 
@@ -91,7 +80,6 @@ namespace Captura
         {
             Binder.BindAsInterfaceAndClass<IVideoSourceProvider, NoVideoSourceProvider>();
             Binder.BindAsInterfaceAndClass<IVideoSourceProvider, AroundMouseSourceProvider>();
-            Binder.BindAsInterfaceAndClass<IVideoSourceProvider, WebcamSourceProvider>();
             Binder.BindAsInterfaceAndClass<IVideoSourceProvider, FullScreenSourceProvider>();
             Binder.BindAsInterfaceAndClass<IVideoSourceProvider, ScreenSourceProvider>();
             Binder.BindAsInterfaceAndClass<IVideoSourceProvider, WindowSourceProvider>();
@@ -100,7 +88,6 @@ namespace Captura
 
         static void BindVideoWriterProviders(IBinder Binder)
         {
-            Binder.BindAsInterfaceAndClass<IVideoWriterProvider, SharpAviWriterProvider>();
             Binder.BindAsInterfaceAndClass<IVideoWriterProvider, DiscardWriterProvider>();
         }
 
@@ -110,11 +97,9 @@ namespace Captura
             Binder.Bind(() => Binder.Get<Settings>().Audio);
             Binder.Bind(() => Binder.Get<Settings>().Proxy);
             Binder.Bind(() => Binder.Get<Settings>().Sounds);
-            Binder.Bind(() => Binder.Get<Settings>().Imgur);
             Binder.Bind(() => Binder.Get<Settings>().Steps);
             Binder.Bind(() => Binder.Get<Settings>().Video);
             Binder.Bind(() => Binder.Get<Settings>().UI);
-            Binder.Bind(() => Binder.Get<Settings>().WebcamOverlay);
         }
     }
 }

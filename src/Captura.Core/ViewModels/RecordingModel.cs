@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Captura.Audio;
-using Captura.FFmpeg;
 using Captura.Loc;
 using Captura.Models;
 using Captura.MouseKeyHook;
@@ -27,7 +26,6 @@ namespace Captura.ViewModels
         readonly WebcamModel _webcamModel;
         readonly TimerModel _timerModel;
         readonly IMessageProvider _messageProvider;
-        readonly IFFmpegViewsProvider _ffmpegViewsProvider;
 
         readonly KeymapViewModel _keymap;
         readonly IAudioSource _audioSource;
@@ -45,7 +43,6 @@ namespace Captura.ViewModels
             KeymapViewModel Keymap,
             TimerModel TimerModel,
             IMessageProvider MessageProvider,
-            IFFmpegViewsProvider FFmpegViewsProvider,
             IFpsManager FpsManager) : base(Settings, Loc)
         {
             _systemTray = SystemTray;
@@ -55,7 +52,6 @@ namespace Captura.ViewModels
             _keymap = Keymap;
             _timerModel = TimerModel;
             _messageProvider = MessageProvider;
-            _ffmpegViewsProvider = FFmpegViewsProvider;
             _fpsManager = FpsManager;
 
             SystemEvents.PowerModeChanged += SystemEvents_PowerModeChanged;
@@ -149,14 +145,6 @@ namespace Captura.ViewModels
             {
                 videoEncoder = GetVideoFileWriterWithPreview(imgProvider, AudioProvider, RecordingParams);
             }
-            catch (FFmpegNotFoundException)
-            {
-                _ffmpegViewsProvider.ShowUnavailable();
-
-                imgProvider?.Dispose();
-
-                return false;
-            }
             catch (Exception e)
             {
                 _messageProvider.ShowException(e, e.Message);
@@ -167,16 +155,6 @@ namespace Captura.ViewModels
             }
 
             _recorder = new Recorder(videoEncoder, imgProvider, Settings.Video.FrameRate, AudioProvider, _fpsManager);
-
-            var webcamMode = RecordingParams.VideoSourceKind is WebcamSourceProvider;
-
-            // Separate file for webcam
-            if (!webcamMode
-                && !(_webcamModel.SelectedCam is NoWebcamItem)
-                && Settings.WebcamOverlay.SeparateFile)
-            {
-                SeparateFileForWebcam(RecordingParams);
-            }
 
             // Separate file for every audio source
             if (Settings.Audio.SeparateFilePerSource)
@@ -350,9 +328,8 @@ namespace Captura.ViewModels
                     CurrentFileName = GetAudioFileName(0);
                 }
             }
-            catch (FFmpegNotFoundException)
+            catch (Exception)
             {
-                _ffmpegViewsProvider.ShowUnavailable();
 
                 return false;
             }
@@ -460,35 +437,14 @@ namespace Captura.ViewModels
                 AudioProvider = AudioProvider
             };
 
-            if (Settings.Video.RecorderMode == RecorderMode.Replay)
-            {
-                return new FFmpegReplayWriter(args,
-                    Settings.Video.ReplayDuration,
-                    M => RecordingParams.VideoWriter.GetVideoFileWriter(M));
-            }
-            else return RecordingParams.VideoWriter.GetVideoFileWriter(args);
+            return RecordingParams.VideoWriter.GetVideoFileWriter(args);
         }
 
         IEnumerable<IOverlay> GetOverlays(RecordingModelParams RecordingParams, IMouseKeyHook MouseKeyHook)
         {
             // No mouse and webcam overlays in webcam mode
-            var webcamMode = RecordingParams.VideoSourceKind is WebcamSourceProvider;
 
-            yield return new CensorOverlay(Settings.Censored);
-
-            if (!webcamMode && !Settings.WebcamOverlay.SeparateFile)
-            {
-                yield return new WebcamOverlay(_webcamModel, Settings);
-            }
-
-            if (!webcamMode)
-            {
-                yield return new MousePointerOverlay(Settings.MousePointerOverlay);
-            }
-
-            var clickSettings = webcamMode
-                ? new MouseClickSettings { Display = false }
-                : Settings.Clicks;
+            var clickSettings = Settings.Clicks;
 
             yield return new MouseKeyOverlay(MouseKeyHook,
                 clickSettings,

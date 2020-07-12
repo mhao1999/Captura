@@ -1,6 +1,5 @@
 ﻿using System;
 using Captura.Audio;
-using Captura.FFmpeg;
 using Captura.Hotkeys;
 using Captura.Models;
 using Captura.Video;

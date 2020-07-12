@@ -1,5 +1,4 @@
-﻿using Captura.FFmpeg;
-using Captura.Hotkeys;
+﻿using Captura.Hotkeys;
 using Captura.Models;
 
 namespace Captura.ViewModels
@@ -19,8 +18,6 @@ namespace Captura.ViewModels
             Binder.BindSingleton<RecordingViewModel>();
             Binder.BindSingleton<MainViewModel>();
             Binder.BindSingleton<HotkeysViewModel>();
-            Binder.BindSingleton<FFmpegLogViewModel>();
-            Binder.BindSingleton<FFmpegCodecsViewModel>();
             Binder.BindSingleton<ViewConditionsModel>();
 
             Binder.BindSingleton<VideoSourcesViewModel>();
@@ -31,9 +28,6 @@ namespace Captura.ViewModels
             Binder.BindSingleton<CustomOverlaysViewModel>();
             Binder.BindSingleton<CustomImageOverlaysViewModel>();
             Binder.BindSingleton<CensorOverlaysViewModel>();
-
-            Binder.BindSingleton<FFmpegLog>();
-            Binder.Bind<IFFmpegLogRepository>(ServiceProvider.Get<FFmpegLog>);
 
             Binder.Bind<IHotkeyActor, HotkeyActor>();
         }

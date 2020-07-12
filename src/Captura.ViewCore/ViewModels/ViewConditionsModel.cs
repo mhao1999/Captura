@@ -1,6 +1,5 @@
 ﻿using System.Reactive.Linq;
 using System.Windows;
-using Captura.FFmpeg;
 using Captura.Models;
 using Captura.Video;
 using Captura.Webcam;
@@ -55,11 +54,6 @@ namespace Captura.ViewModels
                 .Select(M => M > 1)
                 .ToReadOnlyReactivePropertySlim();
 
-            IsFFmpeg = VideoWritersViewModel
-                .ObserveProperty(M => M.SelectedVideoWriterKind)
-                .Select(M => M is FFmpegWriterProvider || M is StreamingWriterProvider)
-                .ToReadOnlyReactivePropertySlim();
-
             IsVideoQuality = VideoWritersViewModel
                 .ObserveProperty(M => M.SelectedVideoWriterKind)
                 .Select(M => M is DiscardWriterProvider)
@@ -72,51 +66,15 @@ namespace Captura.ViewModels
                 .Select(M => M == RecorderMode.Replay)
                 .ToReadOnlyReactivePropertySlim();
 
-            CanChangeWebcam = new[]
-                {
-                    RecordingModel
-                        .ObserveProperty(M => M.RecorderState)
-                        .Select(M => M == RecorderState.NotRecording),
-                    Settings.WebcamOverlay
-                        .ObserveProperty(M => M.SeparateFile),
-                    VideoSourcesViewModel
-                        .ObserveProperty(M => M.SelectedVideoSourceKind)
-                        .Select(M => M is WebcamSourceProvider)
-                }
-                .CombineLatest(M =>
-                {
-                    var notRecording = M[0];
-                    var separateFile = M[1];
-                    var webcamMode = M[2];
-
-                    if (webcamMode)
-                    {
-                        return notRecording;
-                    }
-
-                    return !separateFile || notRecording;
-                })
-                .ToReadOnlyReactivePropertySlim();
 
             IsEnabled = RecordingModel
                 .ObserveProperty(M => M.RecorderState)
                 .Select(M => M == RecorderState.NotRecording)
                 .ToReadOnlyReactivePropertySlim();
 
-            CanWebcamSeparateFile = VideoSourcesViewModel
-                .ObserveProperty(M => M.SelectedVideoSourceKind)
-                .Select(M => M is WebcamSourceProvider)
-                .Select(M => !M)
-                .ToReadOnlyReactivePropertySlim();
-
             IsAroundMouseMode = VideoSourcesViewModel
                 .ObserveProperty(M => M.SelectedVideoSourceKind)
                 .Select(M => M is AroundMouseSourceProvider)
-                .ToReadOnlyReactivePropertySlim();
-
-            IsWebcamMode = VideoSourcesViewModel
-                .ObserveProperty(M => M.SelectedVideoSourceKind)
-                .Select(M => M is WebcamSourceProvider)
                 .ToReadOnlyReactivePropertySlim();
 
             ShowSourceNameBox = VideoSourcesViewModel

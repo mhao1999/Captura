@@ -7,8 +7,6 @@ using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
 using System.Linq;
 using Captura.Audio;
-using Captura.FFmpeg;
-using Captura.Imgur;
 using Captura.MouseKeyHook;
 using Captura.Video;
 using Captura.Windows;
@@ -33,9 +31,8 @@ namespace Captura
             };
         }
 
-        public Settings(FFmpegSettings FFmpeg, WindowsSettings WindowsSettings)
+        public Settings(WindowsSettings WindowsSettings)
         {
-            this.FFmpeg = FFmpeg;
             this.WindowsSettings = WindowsSettings;
         }
 
@@ -77,8 +74,6 @@ namespace Captura
 
         public ProxySettings Proxy { get; } = new ProxySettings();
 
-        public ImgurSettings Imgur { get; } = new ImgurSettings();
-
         public WebcamOverlaySettings WebcamOverlay { get; set; } = new WebcamOverlaySettings();
 
         public MouseOverlaySettings MousePointerOverlay { get; set; } = new MouseOverlaySettings
@@ -101,8 +96,6 @@ namespace Captura
         public VideoSettings Video { get; } = new VideoSettings();
 
         public AudioSettings Audio { get; } = new AudioSettings();
-
-        public FFmpegSettings FFmpeg { get; }
 
         public ObservableCollection<CustomOverlaySettings> TextOverlays { get; } = new ObservableCollection<CustomOverlaySettings>();
 

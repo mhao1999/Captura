@@ -18,42 +18,27 @@ namespace Captura.ViewModels
     {
         public DiskWriter DiskWriter { get; }
         public ClipboardWriter ClipboardWriter { get; }
-        public ImageUploadWriter ImgurWriter { get; }
 
         public ScreenShotViewModel(ILocalizationProvider Loc,
             Settings Settings,
             DiskWriter DiskWriter,
             ClipboardWriter ClipboardWriter,
-            ImageUploadWriter ImgurWriter,
             ScreenShotModel ScreenShotModel,
             VideoSourcesViewModel VideoSourcesViewModel,
-            WebcamModel WebcamModel,
             IPlatformServices PlatformServices) : base(Settings, Loc)
         {
             this.DiskWriter = DiskWriter;
             this.ClipboardWriter = ClipboardWriter;
-            this.ImgurWriter = ImgurWriter;
 
             ScreenShotCommand = new[]
                 {
                     VideoSourcesViewModel
                         .ObserveProperty(M => M.SelectedVideoSourceKind)
-                        .Select(M => M is NoVideoSourceProvider),
-                    VideoSourcesViewModel
-                        .ObserveProperty(M => M.SelectedVideoSourceKind)
-                        .Select(M => M is WebcamSourceProvider),
-                    WebcamModel
-                        .ObserveProperty(M => M.SelectedCam)
-                        .Select(M => M is NoWebcamItem)
+                        .Select(M => M is NoVideoSourceProvider)
                 }
                 .CombineLatest(M =>
                 {
                     var noVideo = M[0];
-                    var webcamMode = M[1];
-                    var noWebcam = M[2];
-
-                    if (webcamMode)
-                        return !noWebcam;
 
                     return !noVideo;
                 })

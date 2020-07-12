@@ -6,7 +6,6 @@ using System.Reactive.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Captura.Audio;
-using Captura.FFmpeg;
 using Captura.Loc;
 using Captura.Models;
 using Captura.Video;
@@ -29,7 +28,6 @@ namespace Captura.ViewModels
         readonly IRecentList _recentList;
         readonly IMessageProvider _messageProvider;
         readonly AudioSourceViewModel _audioSourceViewModel;
-        readonly IFFmpegViewsProvider _ffmpegViewsProvider;
 
         readonly SyncContextManager _syncContext = new SyncContextManager();
 
@@ -48,8 +46,7 @@ namespace Captura.ViewModels
             IAudioPlayer AudioPlayer,
             IRecentList RecentList,
             IMessageProvider MessageProvider,
-            AudioSourceViewModel AudioSourceViewModel,
-            IFFmpegViewsProvider FFmpegViewsProvider) : base(Settings, Loc)
+            AudioSourceViewModel AudioSourceViewModel) : base(Settings, Loc)
         {
             _recordingModel = RecordingModel;
             _timerModel = TimerModel;
@@ -61,7 +58,6 @@ namespace Captura.ViewModels
             _recentList = RecentList;
             _messageProvider = MessageProvider;
             _audioSourceViewModel = AudioSourceViewModel;
-            _ffmpegViewsProvider = FFmpegViewsProvider;
 
             var hasAudio = new[]
             {
@@ -80,9 +76,6 @@ namespace Captura.ViewModels
                     VideoSourcesViewModel
                         .ObserveProperty(M => M.SelectedVideoSourceKind)
                         .Select(M => M is NoVideoSourceProvider),
-                    VideoSourcesViewModel
-                        .ObserveProperty(M => M.SelectedVideoSourceKind)
-                        .Select(M => M is WebcamSourceProvider),
                     WebcamModel
                         .ObserveProperty(M => M.SelectedCam)
                         .Select(M => M is NoWebcamItem),
@@ -98,19 +91,15 @@ namespace Captura.ViewModels
                 {
                     var audioEnabled = M[0];
                     var audioOnlyMode = M[1];
-                    var webcamMode = M[2];
-                    var noWebcam = M[3];
-                    var stepsMode = M[4];
-                    var supportsStepsMode = M[5];
+                    var noWebcam = M[2];
+                    var stepsMode = M[3];
+                    var supportsStepsMode = M[4];
 
                     if (stepsMode)
                         return supportsStepsMode;
 
                     if (audioOnlyMode)
                         return audioEnabled;
-
-                    if (webcamMode)
-                        return !noWebcam;
 
                     return true;
                 })
@@ -242,18 +231,6 @@ namespace Captura.ViewModels
 
                         savingRecentItem.Converted(targetFileName);
                         notification.Converted(targetFileName);
-                    }
-                    catch (FFmpegNotFoundException e)
-                    {
-                        try
-                        {
-                            _ffmpegViewsProvider.ShowUnavailable();
-                        }
-                        catch
-                        {
-                            // Show simpler message for cases the above fails
-                            _messageProvider.ShowException(e, e.Message);
-                        }
                     }
                     catch (Exception e)
                     {
