@@ -53,15 +53,6 @@ namespace Captura
             _instance.NavFrame.Navigate(new Uri($"/Pages/{PageName}Page.xaml", UriKind.RelativeOrAbsolute));
         }
 
-        public static void ShowFFmpegLogs() => ShowPage("FFmpegLogs");
-
-        public static void ShowWebcamPage()
-        {
-            ShowInstance();
-
-            _instance.NavFrame.Navigate(ServiceProvider.Get<WebcamPage>());
-        }
-
         void OnGoBack(object Sender, RoutedEventArgs E)
         {
             NavFrame.GoBack();

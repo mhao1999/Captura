@@ -31,8 +31,6 @@ namespace Captura
             {
                 RepositionWindowIfOutside();
 
-                ServiceProvider.Get<WebcamPage>().SetupPreview();
-
                 _helper.HotkeySetup.ShowUnregistered();
             };
 

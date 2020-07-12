@@ -65,7 +65,7 @@ namespace Captura.Models
 
                 case RecentFileType.Video:
                     AddTrimMedia();
-                    list.Add(new RecentAction("Upload to YouTube", icons.YouTube, () => windowService.UploadToYouTube(this.FileName)));
+                    // list.Add(new RecentAction("Upload to YouTube", icons.YouTube, () => windowService.UploadToYouTube(this.FileName)));
                     break;
             }
 

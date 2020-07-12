@@ -17,8 +17,6 @@ namespace Captura
             ServiceProvider.LoadModule(new MainModule());
         }
 
-        public WebcamPage WebcamPage => ServiceProvider.Get<WebcamPage>();
-        
         public MainViewModel MainViewModel => ServiceProvider.Get<MainViewModel>();
 
         public RecentViewModel RecentViewModel => ServiceProvider.Get<RecentViewModel>();
@@ -29,13 +27,8 @@ namespace Captura
 
         public RegionSelectorViewModel RegionSelectorViewModel => ServiceProvider.Get<RegionSelectorViewModel>();
 
-        public FFmpegDownloadViewModel FFmpegDownloadViewModel => ServiceProvider.Get<FFmpegDownloadViewModel>();
-
-        public FFmpegLogViewModel FFmpegLog => ServiceProvider.Get<FFmpegLogViewModel>();
-
         public IFpsManager FpsManager => ServiceProvider.Get<IFpsManager>();
 
-        public FFmpegCodecsViewModel FFmpegCodecsViewModel => ServiceProvider.Get<FFmpegCodecsViewModel>();
 
         public ProxySettingsViewModel ProxySettingsViewModel => ServiceProvider.Get<ProxySettingsViewModel>();
 
@@ -44,8 +37,6 @@ namespace Captura
         public CrashLogsViewModel CrashLogsViewModel => ServiceProvider.Get<CrashLogsViewModel>();
 
         public FileNameFormatViewModel FileNameFormatViewModel => ServiceProvider.Get<FileNameFormatViewModel>();
-
-        public YouTubeUploaderViewModel YouTubeUploaderViewModel => ServiceProvider.Get<YouTubeUploaderViewModel>();
 
         public SoundsViewModel SoundsViewModel => ServiceProvider.Get<SoundsViewModel>();
 
@@ -70,8 +61,6 @@ namespace Captura
         public TimerModel TimerModel => ServiceProvider.Get<TimerModel>();
 
         public AudioSourceViewModel AudioSource => ServiceProvider.Get<AudioSourceViewModel>();
-
-        public WebcamModel WebcamModel => ServiceProvider.Get<WebcamModel>();
 
         public VideoWritersViewModel VideoWritersViewModel => ServiceProvider.Get<VideoWritersViewModel>();
 
