@@ -38,12 +38,6 @@
             set => Set(value);
         }
 
-        public string Webcam
-        {
-            get => Get("");
-            set => Set(value);
-        }
-
         public int Quality
         {
             get => Get(70);

@@ -34,10 +34,6 @@
                                       IconData="{Binding Icons.Keyboard, Source={StaticResource ServiceLocator}}"
                                       CommandParameter="/Pages/HotkeysPage.xaml"/>
 
-                <captura:ModernButton Content="文件命名"
-                                      IconData="{Binding Icons.NewFile, Source={StaticResource ServiceLocator}}"
-                                      CommandParameter="/Pages/FileNameFormatPage.xaml"/>
-
                 <captura:ModernButton Content="置顶内容"
                                       IconData="{Binding Icons.Arrow, Source={StaticResource ServiceLocator}}"
                                       CommandParameter="{x:Static captura:OverlayPage.Instance}"/>
