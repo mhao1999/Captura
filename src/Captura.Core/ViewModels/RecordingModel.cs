@@ -7,7 +7,6 @@ using Captura.Audio;
 using Captura.Loc;
 using Captura.Models;
 using Captura.MouseKeyHook;
-using Captura.MouseKeyHook.Steps;
 using Captura.Video;
 using Captura.Webcam;
 using Microsoft.Win32;
@@ -185,40 +184,6 @@ namespace Captura.ViewModels
             return true;
         }
 
-        bool SetupStepsRecorder(RecordingModelParams RecordingParams)
-        {
-            IImageProvider ImgProviderGetter() => GetImageProvider(RecordingParams);
-
-            if (!GetImageProviderSafe(ImgProviderGetter, RecordingParams, out var imgProvider))
-                return false;
-
-            IVideoFileWriter videoEncoder;
-
-            try
-            {
-                videoEncoder = GetVideoFileWriterWithPreview(imgProvider, null, RecordingParams);
-            }
-            catch (Exception e)
-            {
-                _messageProvider.ShowException(e, e.Message);
-
-                imgProvider?.Dispose();
-
-                return false;
-            }
-
-            var mouseKeyHook = new MouseKeyHook.MouseKeyHook();
-
-            _recorder = new StepsRecorder(mouseKeyHook,
-                videoEncoder,
-                imgProvider,
-                Settings.Clicks,
-                Settings.Steps,
-                _keymap);
-            
-            return true;
-        }
-
         /// <summary>
         /// 开始录制的时候，要确定文件名称
         /// </summary>
@@ -234,12 +199,6 @@ namespace Captura.ViewModels
             // 输出文件名称
             CurrentFileName = Settings.GetFileName(extension, FileName);
 
-            if (Settings.Video.RecorderMode == RecorderMode.Steps)
-            {
-                if (!SetupStepsRecorder(RecordingParams))
-                    return false;
-            }
-            else
             {
                 if (!SetupAudioProvider(RecordingParams, out var audioProvider))
                     return false;
