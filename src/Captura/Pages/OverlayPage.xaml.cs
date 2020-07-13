@@ -116,20 +116,6 @@ namespace Captura
             return control;
         }
 
-        LayerFrame Censor(CensorOverlaySettings Settings)
-        {
-            var control = Generate(Settings, "Censored", Colors.Black);
-
-            var vm = new CensorOverlayReactor(Settings);
-
-            control.Bind(WidthProperty, vm.Width);
-            control.Bind(HeightProperty, vm.Height);
-
-            control.BindOne(VisibilityProperty, vm.Visible);
-
-            return control;
-        }
-
         LayerFrame Keystrokes(KeystrokesSettings Settings)
         {
             var control = Text(Settings, "Keystrokes");
@@ -146,7 +132,6 @@ namespace Captura
 
         readonly List<LayerFrame> _textOverlays = new List<LayerFrame>();
         readonly List<LayerFrame> _imageOverlays = new List<LayerFrame>();
-        readonly List<LayerFrame> _censorOverlays = new List<LayerFrame>();
 
         void UpdateOverlays<TSettings>(IEnumerable<TSettings> Settings,
             List<LayerFrame> LayerFrames,
@@ -169,11 +154,6 @@ namespace Captura
 
                 Panel.SetZIndex(layerFrame, ZIndex);
             }
-        }
-
-        void UpdateCensorOverlays(IEnumerable<CensorOverlaySettings> Settings)
-        {
-            UpdateOverlays(Settings, _censorOverlays, Censor, true, -1);
         }
 
         void UpdateTextOverlays(IEnumerable<CustomOverlaySettings> Settings)
@@ -251,11 +231,6 @@ namespace Captura
         void PlaceOverlays()
         {
             var settings = ServiceProvider.Get<Settings>();
-
-            var censorOverlayVm = ServiceProvider.Get<CensorOverlaysViewModel>();
-
-            UpdateCensorOverlays(censorOverlayVm.Collection);
-            (censorOverlayVm.Collection as INotifyCollectionChanged).CollectionChanged += (S, E) => UpdateCensorOverlays(censorOverlayVm.Collection);
 
             PrepareMousePointer(settings.MousePointerOverlay);
             PrepareMouseClick(settings.Clicks);

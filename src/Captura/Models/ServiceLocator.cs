@@ -27,9 +27,6 @@ namespace Captura
 
         public IFpsManager FpsManager => ServiceProvider.Get<IFpsManager>();
 
-
-        public ProxySettingsViewModel ProxySettingsViewModel => ServiceProvider.Get<ProxySettingsViewModel>();
-
         public LicensesViewModel LicensesViewModel => ServiceProvider.Get<LicensesViewModel>();
 
         public CrashLogsViewModel CrashLogsViewModel => ServiceProvider.Get<CrashLogsViewModel>();
@@ -49,8 +46,6 @@ namespace Captura
         public CustomImageOverlaysViewModel CustomImageOverlays => ServiceProvider.Get<CustomImageOverlaysViewModel>();
 
         public CustomOverlaysViewModel CustomOverlays => ServiceProvider.Get<CustomOverlaysViewModel>();
-
-        public CensorOverlaysViewModel CensorOverlays => ServiceProvider.Get<CensorOverlaysViewModel>();
 
         public ViewConditionsModel ViewConditions => ServiceProvider.Get<ViewConditionsModel>();
 

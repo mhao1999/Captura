@@ -10,7 +10,6 @@ namespace Captura.ViewModels
             Binder.BindSingleton<CrashLogsViewModel>();
             Binder.BindSingleton<FileNameFormatViewModel>();
             Binder.BindSingleton<LicensesViewModel>();
-            Binder.BindSingleton<ProxySettingsViewModel>();
             Binder.BindSingleton<SoundsViewModel>();
             Binder.BindSingleton<RecentViewModel>();
             Binder.BindSingleton<UpdateCheckerViewModel>();
@@ -26,7 +25,6 @@ namespace Captura.ViewModels
 
             Binder.BindSingleton<CustomOverlaysViewModel>();
             Binder.BindSingleton<CustomImageOverlaysViewModel>();
-            Binder.BindSingleton<CensorOverlaysViewModel>();
 
             Binder.Bind<IHotkeyActor, HotkeyActor>();
         }

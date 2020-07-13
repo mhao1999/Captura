@@ -220,12 +220,19 @@ namespace Captura.ViewModels
             return true;
         }
 
+        /// <summary>
+        /// 开始录制的时候，要确定文件名称
+        /// </summary>
+        /// <param name="RecordingParams"></param>
+        /// <param name="FileName"></param>
+        /// <returns></returns>
         public bool StartRecording(RecordingModelParams RecordingParams, string FileName = null)
         {
             IsVideo = true;
 
             var extension = RecordingParams.VideoWriter.Extension;
 
+            // 输出文件名称
             CurrentFileName = Settings.GetFileName(extension, FileName);
 
             if (Settings.Video.RecorderMode == RecorderMode.Steps)

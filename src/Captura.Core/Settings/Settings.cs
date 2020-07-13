@@ -85,8 +85,6 @@ namespace Captura
 
         public TextOverlaySettings Elapsed { get; set; } = new TextOverlaySettings();
 
-        public ObservableCollection<CensorOverlaySettings> Censored { get; } = new ObservableCollection<CensorOverlaySettings>();
-        
         public VisualSettings UI { get; } = new VisualSettings();
 
         public VideoSettings Video { get; } = new VideoSettings();

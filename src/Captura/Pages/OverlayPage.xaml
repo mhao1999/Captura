@@ -38,9 +38,6 @@
                                                       DockPanel.Dock="Bottom"/>
                 </StackPanel>
             </TabItem>
-            <TabItem Header="Censor">
-                <Frame Source="../Pages/CensorOverlaysPage.xaml"/>
-            </TabItem>
             <TabItem Header="Text">
                 <Frame Source="../Pages/TextOverlaysPage.xaml"/>
             </TabItem>
