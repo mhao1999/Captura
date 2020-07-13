@@ -231,16 +231,9 @@ namespace Captura
 
         async void OnLoaded(object Sender, RoutedEventArgs RoutedEventArgs)
         {
-            await UpdateBackground();
-
             PlaceOverlays();
 
             UpdateScale();
-        }
-
-        async Task UpdateBackground()
-        {
-            Img.Source = await WpfExtensions.GetBackground();
         }
 
         void UpdateScale()

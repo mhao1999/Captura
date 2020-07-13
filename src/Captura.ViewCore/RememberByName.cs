@@ -13,21 +13,18 @@ namespace Captura.Models
         readonly VideoSourcesViewModel _videoSourcesViewModel;
         readonly VideoWritersViewModel _videoWritersViewModel;
         readonly AudioSourceViewModel _audioSourceViewModel;
-        readonly ScreenShotModel _screenShotModel;
         readonly IEnumerable<IVideoSourceProvider> _videoSourceProviders;
 
         public RememberByName(Settings Settings,
             VideoSourcesViewModel VideoSourcesViewModel,
             VideoWritersViewModel VideoWritersViewModel,
             AudioSourceViewModel AudioSourceViewModel,
-            ScreenShotModel ScreenShotModel,
             IEnumerable<IVideoSourceProvider> VideoSourceProviders)
         {
             _settings = Settings;
             _videoSourcesViewModel = VideoSourcesViewModel;
             _videoWritersViewModel = VideoWritersViewModel;
             _audioSourceViewModel = AudioSourceViewModel;
-            _screenShotModel = ScreenShotModel;
             _videoSourceProviders = VideoSourceProviders;
         }
 
@@ -58,13 +55,6 @@ namespace Captura.Models
             _settings.Audio.Microphone = _audioSourceViewModel.SelectedMicrophone?.Name;
 
             _settings.Audio.Speaker = _audioSourceViewModel.SelectedSpeaker?.Name;
-
-            // Remember ScreenShot Target
-            _settings.ScreenShots.SaveTargets = _screenShotModel
-                .AvailableImageWriters
-                .Where(M => M.Active)
-                .Select(M => M.Display)
-                .ToArray();
 
             // Remember Steps writer
             _settings.Steps.Writer = _videoWritersViewModel
@@ -134,24 +124,6 @@ namespace Captura.Models
 
             if (speaker != null)
                 _audioSourceViewModel.SelectedSpeaker = speaker;
-
-            // Restore ScreenShot Target
-            if (_settings.ScreenShots.SaveTargets != null)
-            {
-                foreach (var imageWriter in _screenShotModel.AvailableImageWriters)
-                {
-                    imageWriter.Active = _settings
-                        .ScreenShots
-                        .SaveTargets
-                        .Contains(imageWriter.Display);
-                }
-
-                // Activate First if none
-                if (!_screenShotModel.AvailableImageWriters.Any(M => M.Active))
-                {
-                    _screenShotModel.AvailableImageWriters[0].Active = true;
-                }
-            }
 
             // Restore Steps writer
             if (!string.IsNullOrEmpty(_settings.Steps.Writer))

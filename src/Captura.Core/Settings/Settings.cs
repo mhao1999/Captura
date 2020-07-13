@@ -89,8 +89,6 @@ namespace Captura
         
         public VisualSettings UI { get; } = new VisualSettings();
 
-        public ScreenShotSettings ScreenShots { get; } = new ScreenShotSettings();
-
         public VideoSettings Video { get; } = new VideoSettings();
 
         public AudioSettings Audio { get; } = new AudioSettings();

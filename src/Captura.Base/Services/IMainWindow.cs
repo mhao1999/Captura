@@ -6,8 +6,6 @@
 
         bool IsMinimized { get; set; }
 
-        void EditImage(string FileName);
-
         void TrimMedia(string FileName);
     }
 }

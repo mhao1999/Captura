@@ -21,7 +21,6 @@ namespace Captura
 
             BindViewModels(Binder);
             BindSettings(Binder);
-            BindImageWriters(Binder);
             BindVideoWriterProviders(Binder);
             BindVideoSourceProviders(Binder);
             BindAudioSource(Binder);
@@ -45,17 +44,9 @@ namespace Captura
             WindowsModule.Unload();
         }
 
-        static void BindImageWriters(IBinder Binder)
-        {
-            Binder.BindAsInterfaceAndClass<IImageWriterItem, DiskWriter>();
-            Binder.BindAsInterfaceAndClass<IImageWriterItem, ClipboardWriter>();
-            Binder.BindAsInterfaceAndClass<IImageWriterItem, EditorWriter>();
-        }
-
         static void BindViewModels(IBinder Binder)
         {
             Binder.BindSingleton<TimerModel>();
-            Binder.BindSingleton<ScreenShotModel>();
             Binder.BindSingleton<RecordingModel>();
             Binder.BindSingleton<KeymapViewModel>();
         }

@@ -31,12 +31,6 @@ namespace Captura.Models
             set => _window.Invoke().WindowState = value ? WindowState.Minimized : WindowState.Normal;
         }
 
-        public void EditImage(string FileName)
-        {
-            var settings = ServiceProvider.Get<Settings>().ScreenShots;
-            Process.Start(settings.ExternalEditor, $"\"{FileName}\"");
-        }
-
         public void TrimMedia(string FileName)
         {
             var win = new TrimmerWindow();

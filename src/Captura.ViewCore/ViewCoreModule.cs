@@ -14,7 +14,6 @@ namespace Captura.ViewModels
             Binder.BindSingleton<SoundsViewModel>();
             Binder.BindSingleton<RecentViewModel>();
             Binder.BindSingleton<UpdateCheckerViewModel>();
-            Binder.BindSingleton<ScreenShotViewModel>();
             Binder.BindSingleton<RecordingViewModel>();
             Binder.BindSingleton<MainViewModel>();
             Binder.BindSingleton<HotkeysViewModel>();

@@ -7,19 +7,17 @@ namespace Captura.ViewModels
     // ReSharper disable once ClassNeverInstantiated.Global
     class HotkeyActor : IHotkeyActor
     {
-        readonly ScreenShotViewModel _screenShotViewModel;
         readonly RecordingViewModel _recordingViewModel;
         readonly Settings _settings;
         readonly VideoSourcesViewModel _videoSourcesViewModel;
         readonly RegionSourceProvider _regionSourceProvider;
 
-        public HotkeyActor(ScreenShotViewModel ScreenShotViewModel,
+        public HotkeyActor(
             RecordingViewModel RecordingViewModel,
             Settings Settings,
             VideoSourcesViewModel VideoSourcesViewModel,
             RegionSourceProvider RegionSourceProvider)
         {
-            _screenShotViewModel = ScreenShotViewModel;
             _recordingViewModel = RecordingViewModel;
             _settings = Settings;
             _videoSourcesViewModel = VideoSourcesViewModel;
@@ -38,36 +36,12 @@ namespace Captura.ViewModels
                     _recordingViewModel.PauseCommand.ExecuteIfCan();
                     break;
 
-                case ServiceName.ScreenShot:
-                    _screenShotViewModel.ScreenShotCommand.ExecuteIfCan();
-                    break;
-
-                case ServiceName.ActiveScreenShot:
-                    _screenShotViewModel.ScreenShotActiveCommand.ExecuteIfCan();
-                    break;
-
-                case ServiceName.DesktopScreenShot:
-                    _screenShotViewModel.ScreenShotDesktopCommand.ExecuteIfCan();
-                    break;
-
                 case ServiceName.ToggleMouseClicks:
                     _settings.Clicks.Display = !_settings.Clicks.Display;
                     break;
 
                 case ServiceName.ToggleKeystrokes:
                     _settings.Keystrokes.Display = !_settings.Keystrokes.Display;
-                    break;
-
-                case ServiceName.ScreenShotRegion:
-                    _screenShotViewModel.ScreenshotRegionCommand.ExecuteIfCan();
-                    break;
-
-                case ServiceName.ScreenShotScreen:
-                    _screenShotViewModel.ScreenshotScreenCommand.ExecuteIfCan();
-                    break;
-
-                case ServiceName.ScreenShotWindow:
-                    _screenShotViewModel.ScreenshotWindowCommand.ExecuteIfCan();
                     break;
 
                 case ServiceName.ToggleRegionPicker:

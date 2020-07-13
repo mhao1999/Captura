@@ -53,11 +53,6 @@ namespace Captura.Models
 
             switch (FileType)
             {
-                case RecentFileType.Image:
-                    list.Add(new RecentAction(loc.CopyToClipboard, icons.Clipboard, OnCopyToClipboardExecute));
-                    list.Add(new RecentAction(loc.Edit, icons.Pencil, () => windowService.EditImage(this.FileName)));
-                    break;
-
                 case RecentFileType.Audio:
                     AddTrimMedia();
                     break;

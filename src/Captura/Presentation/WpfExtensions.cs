@@ -162,39 +162,5 @@ namespace Captura
                 });
         }
 
-        public static async Task<ImageSource> GetBackground()
-        {
-            var vm = ServiceProvider.Get<VideoSourcesViewModel>();
-
-            IBitmapImage bmp;
-
-            switch (vm.SelectedVideoSourceKind?.Source)
-            {
-                case NoVideoItem _:
-                    bmp = ScreenShot.Capture();
-                    break;
-
-                default:
-                    var screenShotModel = ServiceProvider.Get<ScreenShotModel>();
-                    bmp = await screenShotModel.GetScreenShot(vm.SelectedVideoSourceKind, true);
-                    break;
-            }
-
-            if (bmp == null)
-            {
-                bmp = ScreenShot.Capture();
-            }
-
-            using (bmp)
-            {
-                var stream = new MemoryStream();
-                bmp.Save(stream, ImageFormats.Png);
-
-                stream.Seek(0, SeekOrigin.Begin);
-
-                var decoder = new PngBitmapDecoder(stream, BitmapCreateOptions.None, BitmapCacheOption.Default);
-                return decoder.Frames[0];
-            }
-        }
     }
 }

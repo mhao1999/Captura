@@ -21,8 +21,6 @@ namespace Captura
 
         public RecentViewModel RecentViewModel => ServiceProvider.Get<RecentViewModel>();
 
-        public ScreenShotViewModel ScreenShotViewModel => ServiceProvider.Get<ScreenShotViewModel>();
-
         public AboutViewModel AboutViewModel => ServiceProvider.Get<AboutViewModel>();
 
         public RegionSelectorViewModel RegionSelectorViewModel => ServiceProvider.Get<RegionSelectorViewModel>();
@@ -41,8 +39,6 @@ namespace Captura
         public SoundsViewModel SoundsViewModel => ServiceProvider.Get<SoundsViewModel>();
 
         public KeymapViewModel Keymap => ServiceProvider.Get<KeymapViewModel>();
-
-        public EditorWriter EditorWriter => ServiceProvider.Get<EditorWriter>();
 
         public HotkeysViewModel HotkeysViewModel => ServiceProvider.Get<HotkeysViewModel>();
 
