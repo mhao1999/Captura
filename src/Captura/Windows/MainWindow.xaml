@@ -218,7 +218,7 @@
                         <local:CollapsedBar DockPanel.Dock="Bottom"
                                             Margin="-30,0,0,0"/>
 
-                        <local:ScreenShotButton/>
+                        <local:PauseButton/>
                         <local:ModernButton ToolTip="{Binding RecordStop, Source={StaticResource Loc}, Mode=OneWay}"
                                             Command="{Binding RecordingViewModel.RecordCommand, Source={StaticResource ServiceLocator}}"
                                             Foreground="#ee2c2c"

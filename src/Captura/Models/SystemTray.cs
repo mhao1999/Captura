@@ -51,12 +51,7 @@ namespace Captura.Models
 
         public void ShowScreenShotNotification(string FilePath)
         {
-            if (!_settings.Tray.ShowNotifications)
-                return;
 
-            _notificationStack.Add(new ScreenShotBalloon(FilePath));
-
-            Show();
         }
 
         public void ShowNotification(INotification Notification)

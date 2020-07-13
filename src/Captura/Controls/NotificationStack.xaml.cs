@@ -121,17 +121,6 @@ namespace Captura
                 removeRequester.RemoveRequested += () => Remove(Element);
             }
 
-            if (Element is ScreenShotBalloon ssBalloon)
-                ssBalloon.Expander.IsExpanded = true;
-
-            foreach (var item in ItemsControl.Items)
-            {
-                if (item is ScreenShotBalloon screenShotBalloon)
-                {
-                    screenShotBalloon.Expander.IsExpanded = false;
-                }
-            }
-
             ItemsControl.Items.Insert(0, Element);
 
             if (ItemsControl.Items.Count > MaxItems)
