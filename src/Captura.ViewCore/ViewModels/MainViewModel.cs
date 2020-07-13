@@ -23,8 +23,6 @@ namespace Captura.ViewModels
         public ICommand ShowPreviewCommand { get; }
         public ICommand OpenOutputFolderCommand { get; }
         public ICommand SelectOutputFolderCommand { get; }
-        public ICommand SelectFFmpegFolderCommand { get; }
-        public ICommand ResetFFmpegFolderCommand { get; }
         public ICommand TrayLeftClickCommand { get; }
 
         public IReadOnlyReactiveProperty<string> OutFolderDisplay { get; }

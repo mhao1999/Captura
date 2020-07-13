@@ -25,9 +25,6 @@
             <TabItem Header="Mouse">
                 <Frame Source="../Pages/MouseOverlayPage.xaml"/>
             </TabItem>
-            <TabItem Header="Images">
-                <Frame Source="../Pages/ImageOverlaysPage.xaml"/>
-            </TabItem>
         </TabControl>
 
         <GridSplitter Width="3"
