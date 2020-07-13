@@ -7,13 +7,11 @@ namespace Captura.Hotkeys
     public class HotkeySetup
     {
         readonly HotKeyManager _hotKeyManager;
-        readonly IMessageProvider _messageProvider;
 
-        public HotkeySetup(HotKeyManager HotKeyManager,
-            IMessageProvider MessageProvider)
+        public HotkeySetup(HotKeyManager HotKeyManager)
         {
             _hotKeyManager = HotKeyManager;
-            _messageProvider = MessageProvider;
+
         }
 
         public void Setup()
@@ -38,7 +36,7 @@ namespace Captura.Hotkeys
                 message += $"{hotkey.Service.Description} - {hotkey}\n\n";
             }
 
-            _messageProvider.ShowError(message, "Failed to Register Hotkeys");
+           
         }
     }
 }

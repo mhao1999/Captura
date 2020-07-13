@@ -13,7 +13,6 @@ namespace Captura
         public void OnLoad(IBinder Binder)
         {
             // Use singleton to ensure the same instance is used every time.
-            Binder.Bind<IMessageProvider, MessageProvider>();
             Binder.Bind<IRegionProvider, RegionSelectorProvider>();
             Binder.Bind<ISystemTray, SystemTray>();
             Binder.Bind<IPreviewWindow, PreviewWindowService>();

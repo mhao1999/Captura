@@ -23,7 +23,6 @@ namespace Captura.ViewModels
         readonly ISystemTray _systemTray;
         readonly IPreviewWindow _previewWindow;
         readonly TimerModel _timerModel;
-        readonly IMessageProvider _messageProvider;
 
         readonly KeymapViewModel _keymap;
         readonly IAudioSource _audioSource;
@@ -39,7 +38,6 @@ namespace Captura.ViewModels
             IAudioSource AudioSource,
             KeymapViewModel Keymap,
             TimerModel TimerModel,
-            IMessageProvider MessageProvider,
             IFpsManager FpsManager) : base(Settings, Loc)
         {
             _systemTray = SystemTray;
@@ -47,7 +45,6 @@ namespace Captura.ViewModels
             _audioSource = AudioSource;
             _keymap = Keymap;
             _timerModel = TimerModel;
-            _messageProvider = MessageProvider;
             _fpsManager = FpsManager;
 
             SystemEvents.PowerModeChanged += SystemEvents_PowerModeChanged;
@@ -116,13 +113,13 @@ namespace Captura.ViewModels
             }
             catch (WindowClosedException e)
             {
-                _messageProvider.ShowException(e, "Window Closed");
+                
 
                 return false;
             }
             catch (Exception e)
             {
-                _messageProvider.ShowException(e, Loc.ErrorOccurred);
+                
 
                 return false;
             }
@@ -143,7 +140,7 @@ namespace Captura.ViewModels
             }
             catch (Exception e)
             {
-                _messageProvider.ShowException(e, e.Message);
+               
 
                 imgProvider?.Dispose();
 
@@ -176,7 +173,7 @@ namespace Captura.ViewModels
             }
             catch (Exception e)
             {
-                _messageProvider.ShowException(e, e.Message);
+                
 
                 return false;
             }
@@ -336,8 +333,6 @@ namespace Captura.ViewModels
 
                 AfterRecording();
 
-                if (!cancelled)
-                    _messageProvider.ShowException(E, E.Message);
             });
         }
 

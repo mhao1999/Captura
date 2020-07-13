@@ -72,7 +72,7 @@ namespace Captura.Models
         {
             if (!File.Exists(FileName))
             {
-                ServiceProvider.MessageProvider.ShowError("File not Found");
+                
 
                 return;
             }
@@ -88,7 +88,7 @@ namespace Captura.Models
             }
             catch (Exception e)
             {
-                ServiceProvider.MessageProvider.ShowException(e, "Copy to Clipboard failed");
+                
             }
         }
 

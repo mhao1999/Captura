@@ -8,19 +8,16 @@ namespace Captura.Models
     public class DiskWriter : NotifyPropertyChanged, IImageWriterItem
     {
         readonly ISystemTray _systemTray;
-        readonly IMessageProvider _messageProvider;
         readonly Settings _settings;
         readonly ILocalizationProvider _loc;
         readonly IRecentList _recentList;
 
         public DiskWriter(ISystemTray SystemTray,
-            IMessageProvider MessageProvider,
             Settings Settings,
             ILocalizationProvider Loc,
             IRecentList RecentList)
         {
             _systemTray = SystemTray;
-            _messageProvider = MessageProvider;
             _settings = Settings;
             _loc = Loc;
             _recentList = RecentList;
@@ -48,7 +45,7 @@ namespace Captura.Models
             }
             catch (Exception e)
             {
-                _messageProvider.ShowException(e, _loc.NotSaved);
+                
             }
 
             return Task.CompletedTask;

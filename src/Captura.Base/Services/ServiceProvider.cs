@@ -84,15 +84,14 @@ namespace Captura
             try { Process.Start(StartInfo.FileName); }
             catch (Win32Exception e) when (e.NativeErrorCode == 2)
             {
-                MessageProvider.ShowError($"Could not find file: {StartInfo.FileName}");
+                
             }
             catch (Exception e)
             {
-                MessageProvider.ShowException(e, $"Could not open file: {StartInfo.FileName}");
+                
             }
         }
 
-        public static IMessageProvider MessageProvider => Get<IMessageProvider>();
 
         public static Version AppVersion => Assembly.GetEntryAssembly()?.GetName().Version;
 

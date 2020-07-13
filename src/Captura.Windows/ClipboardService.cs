@@ -11,11 +11,9 @@ namespace Captura.Windows
     // ReSharper disable once ClassNeverInstantiated.Global
     class ClipboardService : IClipboardService
     {
-        readonly IMessageProvider _messageProvider;
 
-        public ClipboardService(IMessageProvider MessageProvider)
+        public ClipboardService()
         {
-            _messageProvider = MessageProvider;
         }
 
         public void SetText(string Text)
@@ -26,7 +24,7 @@ namespace Captura.Windows
             try { Clipboard.SetText(Text); }
             catch (ExternalException)
             {
-                _messageProvider?.ShowError($"Copy to Clipboard failed:\n\n{Text}");
+                
             }
         }
 

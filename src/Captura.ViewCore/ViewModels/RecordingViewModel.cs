@@ -26,7 +26,6 @@ namespace Captura.ViewModels
         readonly IMainWindow _mainWindow;
         readonly IAudioPlayer _audioPlayer;
         readonly IRecentList _recentList;
-        readonly IMessageProvider _messageProvider;
         readonly AudioSourceViewModel _audioSourceViewModel;
 
         readonly SyncContextManager _syncContext = new SyncContextManager();
@@ -44,7 +43,6 @@ namespace Captura.ViewModels
             ILocalizationProvider Loc,
             IAudioPlayer AudioPlayer,
             IRecentList RecentList,
-            IMessageProvider MessageProvider,
             AudioSourceViewModel AudioSourceViewModel) : base(Settings, Loc)
         {
             _recordingModel = RecordingModel;
@@ -55,7 +53,6 @@ namespace Captura.ViewModels
             _mainWindow = MainWindow;
             _audioPlayer = AudioPlayer;
             _recentList = RecentList;
-            _messageProvider = MessageProvider;
             _audioSourceViewModel = AudioSourceViewModel;
 
             var hasAudio = new[]
@@ -222,7 +219,7 @@ namespace Captura.ViewModels
                     }
                     catch (Exception e)
                     {
-                        _messageProvider.ShowException(e, "Conversion Failed");
+                        
                     }                    
                 }
 
@@ -233,8 +230,6 @@ namespace Captura.ViewModels
             }
             catch (Exception e)
             {
-                _messageProvider.ShowException(e, "Error occurred when stopping recording.\nThis might sometimes occur if you stop recording just as soon as you start it.");
-
                 return;
             }
 
@@ -294,14 +289,10 @@ namespace Captura.ViewModels
         {
             if (RecorderState.Value == Models.RecorderState.Recording)
             {
-                if (!_messageProvider.ShowYesNo(
-                    "A Recording is in progress. Are you sure you want to exit?", "Confirm Exit"))
                     return false;
             }
             else if (RunningStopRecordingCount > 0)
             {
-                if (!_messageProvider.ShowYesNo(
-                    "Some Recordings have not finished writing to disk. Are you sure you want to exit?", "Confirm Exit"))
                     return false;
             }
 
