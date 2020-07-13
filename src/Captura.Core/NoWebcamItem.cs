@@ -3,7 +3,7 @@ using Captura.Loc;
 
 namespace Captura.Webcam
 {
-    public class NoWebcamItem : NotifyPropertyChanged, IWebcamItem
+    public class NoWebcamItem : NotifyPropertyChanged
     {
         NoWebcamItem()
         {
@@ -21,8 +21,5 @@ namespace Captura.Webcam
 
         public string Name { get; private set; }
 
-        public IWebcamCapture BeginCapture(Action OnClick) => null;
-
-        public static IWebcamItem Instance { get; } = new NoWebcamItem();
     }
 }

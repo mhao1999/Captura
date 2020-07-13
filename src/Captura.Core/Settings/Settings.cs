@@ -72,8 +72,6 @@ namespace Captura
             }
         }
 
-        public ProxySettings Proxy { get; } = new ProxySettings();
-
         public MouseOverlaySettings MousePointerOverlay { get; set; } = new MouseOverlaySettings
         {
             Color = Color.FromArgb(200, 239, 108, 0)
@@ -92,10 +90,6 @@ namespace Captura
         public SoundSettings Sounds { get; } = new SoundSettings();
 
         public TraySettings Tray { get; } = new TraySettings();
-
-        public StepsSettings Steps { get; } = new StepsSettings();
-
-        public AroundMouseSettings AroundMouse { get; } = new AroundMouseSettings();
 
         public WindowsSettings WindowsSettings { get; }
 

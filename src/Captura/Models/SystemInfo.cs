@@ -59,20 +59,6 @@ namespace Captura.Models
                 sb.AppendLine("Unable to get audio devices");
             }
 
-            try
-            {
-                var webcamSource = ServiceProvider.Get<IWebCamProvider>();
-
-                foreach (var webcam in webcamSource.GetSources())
-                {
-                    sb.AppendLine($"Webcam: {webcam.Name}");
-                }
-            }
-            catch
-            {
-                sb.AppendLine("Unable to get webcams");
-            }
-
             sb.AppendLine();
 
             return sb.ToString();

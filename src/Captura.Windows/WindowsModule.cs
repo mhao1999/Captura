@@ -2,7 +2,6 @@
 using Captura.Models;
 using System;
 using Captura.Video;
-using Captura.Webcam;
 using Captura.Windows.Gdi;
 using Captura.Windows.MediaFoundation;
 
@@ -23,7 +22,6 @@ namespace Captura.Windows
             Binder.Bind<IDialogService, DialogService>();
             Binder.Bind<IClipboardService, ClipboardService>();
             Binder.Bind<IImagingSystem, DrawingImagingSystem>();
-            Binder.Bind<IWebCamProvider, WebcamProvider>();
 
             foreach (var audioItem in MfAudioItem.Items)
             {

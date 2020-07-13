@@ -48,18 +48,10 @@ namespace Captura.Models
                 .SelectedVideoWriter
                 .ToString();
 
-            // Remember Post Writer
-            //_settings.Video.PostWriter = _videoWritersViewModel.SelectedPostWriter.ToString();
-
             // Remember Audio Sources
             _settings.Audio.Microphone = _audioSourceViewModel.SelectedMicrophone?.Name;
 
             _settings.Audio.Speaker = _audioSourceViewModel.SelectedSpeaker?.Name;
-
-            // Remember Steps writer
-            _settings.Steps.Writer = _videoWritersViewModel
-                .SelectedStepsWriter
-                ?.ToString();
         }
 
         void RestoreVideoSource()
@@ -124,19 +116,6 @@ namespace Captura.Models
 
             if (speaker != null)
                 _audioSourceViewModel.SelectedSpeaker = speaker;
-
-            // Restore Steps writer
-            if (!string.IsNullOrEmpty(_settings.Steps.Writer))
-            {
-                var stepsWriter = _videoWritersViewModel
-                    .AvailableStepWriters
-                    .FirstOrDefault(M => M.ToString() == _settings.Steps.Writer);
-
-                if (stepsWriter != null)
-                {
-                    _videoWritersViewModel.SelectedStepsWriter = stepsWriter;
-                }
-            }
         }
     }
 }

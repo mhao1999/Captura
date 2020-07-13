@@ -84,18 +84,6 @@ namespace Captura
             {
                 Settings.Load();
             }
-
-            if (Settings.UI.DarkTheme)
-            {
-                AppearanceManager.Current.ThemeSource = AppearanceManager.DarkThemeSource;
-            }
-
-            var accent = Settings.UI.AccentColor;
-
-            if (!string.IsNullOrEmpty(accent))
-            {
-                AppearanceManager.Current.AccentColor = WpfExtensions.ParseColor(accent);
-            }
         }
     }
 }
