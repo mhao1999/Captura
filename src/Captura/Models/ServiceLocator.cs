@@ -35,8 +35,6 @@ namespace Captura
 
         public IIconSet Icons => ServiceProvider.Get<IIconSet>();
 
-        public UpdateCheckerViewModel UpdateCheckerViewModel => ServiceProvider.Get<UpdateCheckerViewModel>();
-
         public CustomImageOverlaysViewModel CustomImageOverlays => ServiceProvider.Get<CustomImageOverlaysViewModel>();
 
         public ViewConditionsModel ViewConditions => ServiceProvider.Get<ViewConditionsModel>();

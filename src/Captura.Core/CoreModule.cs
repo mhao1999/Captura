@@ -24,7 +24,6 @@ namespace Captura
             BindVideoWriterProviders(Binder);
             BindVideoSourceProviders(Binder);
             BindAudioSource(Binder);
-            BindUpdateChecker(Binder);
 
             // Recent
             Binder.Bind<IRecentList, RecentListRepository>();
@@ -47,17 +46,6 @@ namespace Captura
             Binder.BindSingleton<TimerModel>();
             Binder.BindSingleton<RecordingModel>();
             Binder.BindSingleton<KeymapViewModel>();
-        }
-
-        static void BindUpdateChecker(IBinder Binder)
-        {
-            var version = ServiceProvider.AppVersion;
-
-            if (version?.Major == 0)
-            {
-                Binder.Bind<IUpdateChecker, DevUpdateChecker>();
-            }
-            else Binder.Bind<IUpdateChecker, UpdateChecker>();
         }
 
         static void BindAudioSource(IBinder Binder)
