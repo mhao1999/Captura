@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
       DataContext="{Binding SoundsViewModel, Source={StaticResource ServiceLocator}}"
-      Title="{Binding Sounds, Source={StaticResource Loc}, Mode=OneWay}">
+      Title="声音">
     <Grid Margin="5,10">
         <ItemsControl Grid.IsSharedSizeScope="True"
                       ItemsSource="{Binding Items}">
@@ -34,7 +34,7 @@
 
                         <Button Grid.Column="2"
                                 Margin="5"
-                                ToolTip="{Binding Reset, Source={StaticResource Loc}, Mode=OneWay}"
+                                ToolTip="重置"
                                 Command="{Binding ResetCommand}"
                                 IsEnabled="{Binding FileName, Converter={StaticResource NotNullConverter}}"
                                 VerticalContentAlignment="Center">

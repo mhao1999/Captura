@@ -34,7 +34,7 @@
                 Height="33"
                 Background="{DynamicResource ButtonBackgroundHover}"/>
         <DockPanel>
-            <captura:ModernButton ToolTip="{Binding Configure, Source={StaticResource Loc}, Mode=OneWay}"
+            <captura:ModernButton ToolTip="配置"
                                   Click="OpenSettings"
                                   Foreground="{DynamicResource Accent}"
                                   IconData="{Binding Icons.Settings, Source={StaticResource ServiceLocator}}"
@@ -69,7 +69,7 @@
                 </captura:ModernButton.Triggers>
             </captura:ModernButton>
 
-            <captura:ModernButton ToolTip="{Binding OpenOutFolder, Source={StaticResource Loc}, Mode=OneWay}"
+            <captura:ModernButton ToolTip="打开输出目录"
                                   Command="{Binding OpenOutputFolderCommand}"
                                   IconData="{Binding Icons.Folder, Source={StaticResource ServiceLocator}}"
                                   DockPanel.Dock="Right"/>

@@ -2,7 +2,6 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:captura="clr-namespace:Captura"
-             xmlns:loc="clr-namespace:Captura.Loc;assembly=Captura.Loc"
              ShutdownMode="OnMainWindowClose"
              StartupUri="Windows/MainWindow.xaml"
              Startup="Application_Startup"
@@ -24,10 +23,7 @@
                 <ResourceDictionary Source="Presentation/Themes/ModernTogglePill.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             
-            <x:Static x:Key="Loc"
-                      Member="loc:LanguageManager.Instance"/>
-
-            <captura:ServiceLocator x:Key="ServiceLocator"/>
+             <captura:ServiceLocator x:Key="ServiceLocator"/>
 
             <DrawingImage x:Key="RecordStopImageSource">
                 <DrawingImage.Drawing>

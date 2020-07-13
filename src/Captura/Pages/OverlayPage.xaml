@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Captura"
         xmlns:mui="http://firstfloorsoftware.com/ModernUI"
         mc:Ignorable="d"
-        Title="{Binding Overlays, Source={StaticResource Loc}, Mode=OneWay}"
+        Title="置顶内容"
         SizeChanged="OverlayWindow_OnSizeChanged">
     <Grid Background="{DynamicResource WindowBackground}">
         <Grid.ColumnDefinitions>
@@ -25,14 +25,6 @@
             <TabItem Header="Mouse">
                 <Frame Source="../Pages/MouseOverlayPage.xaml"/>
             </TabItem>
-            <TabItem Header="Elapsed"
-                     DataContext="{Binding AboutViewModel, Source={StaticResource ServiceLocator}}">
-                <StackPanel DataContext="{Binding Settings.Elapsed}">
-                    <CheckBox Content="Display"
-                              IsChecked="{Binding Display, Mode=TwoWay}"
-                              Margin="0,5"/>
-                </StackPanel>
-            </TabItem>
             <TabItem Header="Images">
                 <Frame Source="../Pages/ImageOverlaysPage.xaml"/>
             </TabItem>
@@ -45,7 +37,7 @@
         
         <DockPanel Grid.Column="2">
             <Label DockPanel.Dock="Top"
-                   Content="{Binding Preview, Source={StaticResource Loc}}"
+                   Content="预览"
                    Padding="5"/>
 
             <Grid Background="Transparent"

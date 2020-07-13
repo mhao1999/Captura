@@ -3,13 +3,13 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:local="clr-namespace:Captura"
       DataContext="{Binding RecentViewModel, Source={StaticResource ServiceLocator}}"
-      Title="{Binding Recent, Source={StaticResource Loc}, Mode=OneWay}">
+      Title="Recent">
     <Grid>
         <DockPanel Margin="5,0,0,0">
             <DockPanel DockPanel.Dock="Top"
                        Margin="0,0,0,10">
-                <Button Content="{Binding Clear, Source={StaticResource Loc}, Mode=OneWay}"
-                        ToolTip="{Binding ClearRecentList, Source={StaticResource Loc}, Mode=OneWay}"
+                <Button Content="Clear"
+                        ToolTip="ClearRecentList"
                         DockPanel.Dock="Right"
                         Command="{Binding ClearCommand}"/>
             </DockPanel>

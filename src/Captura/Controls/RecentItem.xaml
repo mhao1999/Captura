@@ -16,7 +16,7 @@
               Fill="{Binding IconColor}"/>
 
         <Button DockPanel.Dock="Right"
-                ToolTip="{Binding RemoveFromList, Source={StaticResource Loc}, Mode=OneWay}"
+                ToolTip="从列表中移除"
                 BorderBrush="Transparent"
                 BorderThickness="0"
                 Margin="5,0"

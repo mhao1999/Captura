@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Threading;
-using Captura.Loc;
 using Captura.Models;
 using Captura.MouseKeyHook;
 using Captura.ViewModels;
@@ -35,7 +34,6 @@ namespace Captura
 
             Args.Handled = true;
 
-            new ErrorWindow(Args.Exception, Args.Exception.Message).ShowDialog();
         }
 
         void ShowSplashScreen()
@@ -62,8 +60,6 @@ namespace Captura
             var settings = ServiceProvider.Get<Settings>();
 
             InitTheme(settings);
-
-            BindLanguageSetting(settings);
         }
 
         void OnCurrentDomainOnUnhandledException(object S, UnhandledExceptionEventArgs E)
@@ -76,25 +72,10 @@ namespace Captura
 
             if (E.ExceptionObject is Exception e)
             {
-                Current.Dispatcher.Invoke(() => new ErrorWindow(e, e.Message).ShowDialog());
+
             }
 
             Shutdown();
-        }
-
-        static void BindLanguageSetting(Settings Settings)
-        {
-            var loc = LanguageManager.Instance;
-
-            if (!string.IsNullOrWhiteSpace(Settings.UI.Language))
-            {
-                var matchedCulture = loc.AvailableCultures.FirstOrDefault(M => M.Name == Settings.UI.Language);
-
-                if (matchedCulture != null)
-                    loc.CurrentCulture = matchedCulture;
-            }
-
-            loc.LanguageChanged += L => Settings.UI.Language = L.Name;
         }
 
         static void InitTheme(Settings Settings)

@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Captura"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <local:ModernButton ToolTip="{Binding PauseResume, Source={StaticResource Loc}, Mode=OneWay}" 
+    <local:ModernButton ToolTip="暂停 | 继续" 
                         Command="{Binding RecordingViewModel.PauseCommand, Source={StaticResource ServiceLocator}}"
                         IconData="{Binding Icons.Pause, Source={StaticResource ServiceLocator}}"
                         Opacity="0.9"

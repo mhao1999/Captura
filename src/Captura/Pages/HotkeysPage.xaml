@@ -4,7 +4,7 @@
       xmlns:local="clr-namespace:Captura"
       xmlns:hotkeys="clr-namespace:Captura.Hotkeys;assembly=Captura.Hotkeys"
       DataContext="{Binding HotkeysViewModel, Source={StaticResource ServiceLocator}}"
-      Title="{Binding Hotkeys, Source={StaticResource Loc}, Mode=OneWay}">
+      Title="快捷键">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="4*"/>
@@ -29,7 +29,7 @@
                               HorizontalAlignment="Center"
                               VerticalAlignment="Center"/>
 
-                        <TextBlock Text="{Binding Add, Source={StaticResource Loc}, Mode=OneWay}"/>
+                        <TextBlock Text="添加"/>
                     </DockPanel>
                 </Button>
                 
@@ -45,7 +45,7 @@
                               HorizontalAlignment="Center"
                               VerticalAlignment="Center"/>
 
-                        <TextBlock Text="{Binding RestoreDefaults, Source={StaticResource Loc}, Mode=OneWay}"/>
+                        <TextBlock Text="恢复默认值"/>
                     </DockPanel>
                 </Button>
             </Grid>

@@ -25,11 +25,11 @@
                          Description="Captura">
             <TaskbarItemInfo.ThumbButtonInfos>
                 <ThumbButtonInfo Command="{Binding ScreenShotViewModel.ScreenShotCommand, Source={StaticResource ServiceLocator}}"
-                                 Description="{Binding ScreenShot, Source={StaticResource Loc}, Mode=OneWay}"
+                                 Description="截图"
                                  DismissWhenClicked="True"
                                  ImageSource="{StaticResource ScreenShotImageSource}"/>
                 <ThumbButtonInfo Command="{Binding RecordingViewModel.RecordCommand, Source={StaticResource ServiceLocator}}"
-                                 Description="{Binding RecordStop, Source={StaticResource Loc}, Mode=OneWay}"
+                                 Description="录制 | 停止"
                                  DismissWhenClicked="True"
                                  ImageSource="{StaticResource RecordStopImageSource}"/>
             </TaskbarItemInfo.ThumbButtonInfos>
@@ -50,7 +50,7 @@
                         TrayMouseDoubleClick="SystemTray_TrayMouseDoubleClick">
             <tb:TaskbarIcon.ContextMenu>
                 <ContextMenu>
-                    <MenuItem Header="{Binding StartStopRecording, Source={StaticResource Loc}, Mode=OneWay}"
+                    <MenuItem Header="开始/停止录制"
                               Command="{Binding RecordingViewModel.RecordCommand, Source={StaticResource ServiceLocator}}">
                         <MenuItem.Icon>
                             <Image Source="{StaticResource RecordStopImageSource}"
@@ -59,7 +59,7 @@
                         </MenuItem.Icon>
                     </MenuItem>
 
-                    <MenuItem Header="{Binding PauseResumeRecording, Source={StaticResource Loc}, Mode=OneWay}"
+                    <MenuItem Header="暂停/继续录制"
                               Command="{Binding RecordingViewModel.PauseCommand, Source={StaticResource ServiceLocator}}">
                         <MenuItem.Icon>
                             <Image Width="10"
@@ -91,7 +91,7 @@
 
                     <Separator/>
 
-                    <MenuItem Header="{Binding ScreenShot, Source={StaticResource Loc}, Mode=OneWay}"
+                    <MenuItem Header="截图"
                               Command="{Binding ScreenShotViewModel.ScreenShotCommand, Source={StaticResource ServiceLocator}}">
                         <MenuItem.Icon>
                             <Image Source="{StaticResource ScreenShotImageSource}"
@@ -100,7 +100,7 @@
                         </MenuItem.Icon>
                     </MenuItem>
 
-                    <MenuItem Header="{Binding ScreenShotDesktop, Source={StaticResource Loc}, Mode=OneWay}"
+                    <MenuItem Header="截取桌面"
                               Command="{Binding ScreenShotViewModel.ScreenShotDesktopCommand, Source={StaticResource ServiceLocator}}">
                         <MenuItem.Icon>
                             <Image Source="{StaticResource ScreenShotImageSource}"
@@ -181,7 +181,7 @@
                         </MenuItem.Icon>
                     </MenuItem>
 
-                    <MenuItem Header="{Binding Exit, Source={StaticResource Loc}, Mode=OneWay}"
+                    <MenuItem Header="退出"
                               Click="MenuExit_Click">
                         <MenuItem.Icon>
                             <Image Width="13"
@@ -219,22 +219,22 @@
                                             Margin="-30,0,0,0"/>
 
                         <local:PauseButton/>
-                        <local:ModernButton ToolTip="{Binding RecordStop, Source={StaticResource Loc}, Mode=OneWay}"
+                        <local:ModernButton ToolTip="录制 | 停止"
                                             Command="{Binding RecordingViewModel.RecordCommand, Source={StaticResource ServiceLocator}}"
                                             Foreground="#ee2c2c"
                                             IconData="{Binding RecordingViewModel.RecorderState.Value, Source={StaticResource ServiceLocator}, Converter={StaticResource StateToRecordButtonGeometryConverter}}"/>
                         <local:PauseButton/>
-                        <local:ModernButton ToolTip="{Binding Close, Source={StaticResource Loc}, Mode=OneWay}"
+                        <local:ModernButton ToolTip="关闭"
                                             Click="CloseButton_Click"
                                             Foreground="#77ef5350"
                                             IconData="{Binding Icons.Close, Source={StaticResource ServiceLocator}}"
                                             DockPanel.Dock="Right"/>
-                        <local:ModernButton ToolTip="{Binding MinTray, Source={StaticResource Loc}, Mode=OneWay}"
+                        <local:ModernButton ToolTip="最小化到任务栏"
                                             Click="HideButton_Click"
                                             IconData="{Binding Icons.DoubleDown, Source={StaticResource ServiceLocator}}"
                                             Opacity="0.7"
                                             DockPanel.Dock="Right"/>
-                        <local:ModernButton ToolTip="{Binding Minimize, Source={StaticResource Loc}, Mode=OneWay}"
+                        <local:ModernButton ToolTip="最小化"
                                             Click="MinButton_Click"
                                             IconData="{Binding Icons.Minimize, Source={StaticResource ServiceLocator}}"
                                             Opacity="0.7"

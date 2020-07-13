@@ -6,7 +6,7 @@
         <Button DockPanel.Dock="Left"
                 Padding="5,0"
                 VerticalContentAlignment="Center"
-                ToolTip="{Binding OpenOutFolder, Source={StaticResource Loc}, Mode=OneWay}"
+                ToolTip="打开输出目录"
                 Command="{Binding OpenOutputFolderCommand}">
             <DockPanel>
                 <Path Data="{Binding Icons.Folder, Source={StaticResource ServiceLocator}}"
@@ -17,12 +17,12 @@
                       HorizontalAlignment="Center"
                       VerticalAlignment="Center"/>
 
-                <TextBlock Text="{Binding OutFolder, Source={StaticResource Loc}, Mode=OneWay}"/>
+                <TextBlock Text="输出目录"/>
             </DockPanel>
         </Button>
 
         <Button DockPanel.Dock="Right"
-                ToolTip="{Binding SelectOutFolder, Source={StaticResource Loc}, Mode=OneWay}"
+                ToolTip="选择输出目录"
                 Command="{Binding SelectOutputFolderCommand}"
                 IsEnabled="{Binding ViewConditions.IsEnabled.Value, Source={StaticResource ServiceLocator}}">
             <Path Stretch="UniformToFill"

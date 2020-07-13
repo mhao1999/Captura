@@ -6,7 +6,7 @@
     <Grid>
         <ScrollViewer>
             <StackPanel DataContext="{Binding AboutViewModel, Source={StaticResource ServiceLocator}}">
-                <Label Content="{Binding MousePointer, Source={StaticResource Loc}, Mode=OneWay}"
+                <Label Content="鼠标指针"
                        FontWeight="DemiBold"
                        Margin="5,5,5,0"/>
 
@@ -27,7 +27,7 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
 
-                        <Label Content="{Binding Radius, Source={StaticResource Loc}, Mode=OneWay}"
+                        <Label Content="半径"
                                ContentStringFormat="{}{0}: "
                                Margin="0,5,5,5"/>
                         <xctk:IntegerUpDown Value="{Binding Radius, Mode=TwoWay}"
@@ -35,7 +35,7 @@
                                             Margin="0,5"
                                             Grid.Column="1"/>
 
-                        <Label Content="{Binding Color, Source={StaticResource Loc}, Mode=OneWay}"
+                        <Label Content="颜色"
                                ContentStringFormat="{}{0}: "
                                Margin="0,5,5,5"
                                Grid.Row="1"/>
@@ -76,7 +76,7 @@
                     </Grid>
                 </StackPanel>
 
-                <Label Content="{Binding MouseClicks, Source={StaticResource Loc}, Mode=OneWay}"
+                <Label Content="鼠标点击"
                        FontWeight="DemiBold"
                        Margin="5,10,5,0"/>
 
@@ -98,7 +98,7 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
 
-                        <Label Content="{Binding Radius, Source={StaticResource Loc}, Mode=OneWay}"
+                        <Label Content="半径"
                                ContentStringFormat="{}{0}: "
                                Margin="0,5,5,5"/>
                         <xctk:IntegerUpDown Value="{Binding Radius, Mode=TwoWay}"
@@ -106,7 +106,7 @@
                                             Margin="0,5"
                                             Grid.Column="1"/>
 
-                        <Label Content="{Binding Color, Source={StaticResource Loc}, Mode=OneWay}"
+                        <Label Content="颜色"
                                ContentStringFormat="{}{0}: "
                                Margin="0,5,5,5"
                                Grid.Row="1"/>
@@ -115,7 +115,7 @@
                                           Grid.Column="1"
                                           Margin="0,5"/>
 
-                        <Label Content="{Binding MouseRightClickColor, Source={StaticResource Loc}, Mode=OneWay}"
+                        <Label Content="右键点击颜色"
                                ContentStringFormat="{}{0}: "
                                Margin="0,5,5,5"
                                Grid.Row="2"/>
@@ -124,7 +124,7 @@
                                           Grid.Column="1"
                                           Margin="0,5"/>
 
-                        <Label Content="{Binding MouseMiddleClickColor, Source={StaticResource Loc}, Mode=OneWay}"
+                        <Label Content="中间键点击颜色"
                                ContentStringFormat="{}{0}: "
                                Margin="0,5,5,5"
                                Grid.Row="3"/>

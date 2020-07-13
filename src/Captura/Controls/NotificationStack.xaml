@@ -17,13 +17,13 @@
     </UserControl.Resources>
     <DockPanel>
         <DockPanel DockPanel.Dock="Top">
-            <local:ModernButton ToolTip="{Binding Close, Source={StaticResource Loc}, Mode=OneWay}"
+            <local:ModernButton ToolTip="关闭"
                                 Click="CloseButton_Click"
                                 IconData="{Binding Icons.ClearNotifications, Source={StaticResource ServiceLocator}}"
                                 DockPanel.Dock="Right"/>
 
             <Label>
-                <TextBlock Text="{Binding Notifications, Source={StaticResource Loc}, Mode=OneWay}"
+                <TextBlock Text="通知"
                            VerticalAlignment="Center"
                            Style="{StaticResource Title}"
                            Padding="5"/>

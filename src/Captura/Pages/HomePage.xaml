@@ -157,7 +157,7 @@
 
             <DockPanel Margin="0,5"
                        Visibility="{Binding ViewConditions.IsAudioMode.Value, Source={StaticResource ServiceLocator}, Converter={StaticResource BoolToVisibilityConverter}}">
-                <Label Content="{Binding AudioFormat, Source={StaticResource Loc}, Mode=OneWay}"
+                <Label Content="音频格式"
                        Margin="0,0,5,0"/>
 
                 <ComboBox ItemsSource="{Binding VideoSourcesViewModel.NoVideoSourceProvider.Sources, Source={StaticResource ServiceLocator}}"

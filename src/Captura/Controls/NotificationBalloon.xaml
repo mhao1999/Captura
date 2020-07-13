@@ -12,8 +12,8 @@
                      Margin="-5,0,0,0"
                      DockPanel.Dock="Bottom"
                      Visibility="{Binding Progress, Converter={StaticResource NotNullConverter}}"/>
-        
-        <local:ModernButton ToolTip="{Binding Close, Source={StaticResource Loc}, Mode=OneWay}"
+
+        <local:ModernButton ToolTip="关闭"
                             Click="CloseButton_Click"
                             Foreground="LightPink"
                             IconData="{Binding Icons.Close, Source={StaticResource ServiceLocator}}"

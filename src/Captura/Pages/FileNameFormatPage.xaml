@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:captura="clr-namespace:Captura"
       DataContext="{Binding FileNameFormatViewModel, Source={StaticResource ServiceLocator}}"
-      Title="{Binding FileNaming, Source={StaticResource Loc}, Mode=OneWay}">
+      Title="文件命名">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="9*"/>
