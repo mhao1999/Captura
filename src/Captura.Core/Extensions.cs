@@ -3,7 +3,6 @@ using DSize = System.Drawing.Size;
 using WSize = System.Windows.Size;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Captura.Loc;
 using Captura.Models;
 
 namespace Captura

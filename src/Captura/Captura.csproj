@@ -25,7 +25,6 @@
     <ProjectReference Include="..\Captura.Base\Captura.Base.csproj" />
     <ProjectReference Include="..\Captura.Core\Captura.Core.csproj" />
     <ProjectReference Include="..\Captura.Hotkeys\Captura.Hotkeys.csproj" />
-    <ProjectReference Include="..\Captura.Loc\Captura.Loc.csproj" />
     <ProjectReference Include="..\Captura.MouseKeyHook\Captura.MouseKeyHook.csproj" />
     <ProjectReference Include="..\Captura.ViewCore\Captura.ViewCore.csproj" />
     <ProjectReference Include="..\Captura.Windows\Captura.Windows.csproj" />

@@ -6,7 +6,6 @@ using System.Reactive.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Captura.Audio;
-using Captura.Loc;
 using Captura.Models;
 using Captura.Video;
 using Captura.Webcam;

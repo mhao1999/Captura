@@ -1,4 +1,3 @@
-using Captura.Loc;
 
 namespace Captura.ViewModels
 {

@@ -1,5 +1,4 @@
 ﻿using System.Text;
-using Captura.Loc;
 
 namespace Captura.Hotkeys
 {

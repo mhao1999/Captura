@@ -1,5 +1,4 @@
 using System.Drawing;
-using Captura.Loc;
 
 namespace Captura.Video
 {

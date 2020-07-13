@@ -1,7 +1,6 @@
 ﻿using Captura.Models;
 using Captura.Audio;
 using Captura.Hotkeys;
-using Captura.Loc;
 using Captura.MouseKeyHook;
 using Captura.Video;
 using Captura.ViewModels;

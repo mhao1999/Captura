@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Captura.Audio;
-using Captura.Loc;
 using Captura.Models;
 using Captura.MouseKeyHook;
 using Captura.Video;
