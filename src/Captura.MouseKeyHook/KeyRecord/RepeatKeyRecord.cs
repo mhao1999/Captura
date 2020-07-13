@@ -4,12 +4,10 @@ namespace Captura.MouseKeyHook
 {
     class RepeatKeyRecord : IKeyRecord
     {
-        readonly KeystrokesSettings _settings;
 
-        public RepeatKeyRecord(KeyRecord Repeated, KeystrokesSettings Settings)
+        public RepeatKeyRecord(KeyRecord Repeated)
         {
             this.Repeated = Repeated;
-            _settings = Settings;
 
             Increment();
         }
@@ -31,8 +29,5 @@ namespace Captura.MouseKeyHook
             TimeStamp = DateTime.Now;
         }
 
-        public string Display => _settings.ShowRepeatCounter
-            ? $"{Repeated} x {Repeat}"
-            : Repeated.ToString();
     }
 }

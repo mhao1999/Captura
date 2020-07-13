@@ -64,8 +64,6 @@ namespace Captura
             InitTheme(settings);
 
             BindLanguageSetting(settings);
-
-            BindKeymapSetting(settings);
         }
 
         void OnCurrentDomainOnUnhandledException(object S, UnhandledExceptionEventArgs E)
@@ -82,21 +80,6 @@ namespace Captura
             }
 
             Shutdown();
-        }
-
-        static void BindKeymapSetting(Settings Settings)
-        {
-            var keymap = ServiceProvider.Get<KeymapViewModel>();
-
-            if (!string.IsNullOrWhiteSpace(Settings.Keystrokes.KeymapName))
-            {
-                var matched = keymap.AvailableKeymaps.FirstOrDefault(M => M.Name == Settings.Keystrokes.KeymapName);
-
-                if (matched != null)
-                    keymap.SelectedKeymap = matched;
-            }
-
-            keymap.PropertyChanged += (S, E) => Settings.Keystrokes.KeymapName = keymap.SelectedKeymap.Name;
         }
 
         static void BindLanguageSetting(Settings Settings)

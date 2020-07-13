@@ -12,7 +12,6 @@ namespace Captura.MouseKeyHook
     {
         #region Fields
         readonly IMouseKeyHook _hook;
-        readonly KeystrokesSettings _keystrokesSettings;
         readonly IOverlay _mouseClickOverlay,
             _keyOverlay,
             _scrollOverlay;
@@ -26,23 +25,15 @@ namespace Captura.MouseKeyHook
         /// </summary>
         public MouseKeyOverlay(IMouseKeyHook Hook,
             MouseClickSettings MouseClickSettings,
-            KeystrokesSettings KeystrokesSettings,
             KeymapViewModel Keymap,
             string FileName,
             Func<TimeSpan> Elapsed)
         {
-            _keystrokesSettings = KeystrokesSettings;
             _keymap = Keymap;
 
             _hook = Hook;
             _mouseClickOverlay = new MouseClickOverlay(_hook, MouseClickSettings);
             _scrollOverlay = new ScrollOverlay(_hook, MouseClickSettings);
-
-            if (KeystrokesSettings.SeparateTextFile)
-            {
-                _textWriter = InitKeysToTextFile(FileName, Elapsed);
-            }
-            else _keyOverlay = new KeyOverlay(_hook, KeystrokesSettings, Keymap);
         }
 
         TextWriter InitKeysToTextFile(string FileName, Func<TimeSpan> Elapsed)
@@ -56,18 +47,6 @@ namespace Captura.MouseKeyHook
 
             var keystrokeFileStream = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write, FileShare.Read);
             var textWriter = new StreamWriter(keystrokeFileStream);
-
-            _hook.KeyDown += (S, E) =>
-            {
-                if (!_keystrokesSettings.Display)
-                {
-                    return;
-                }
-
-                var record = new KeyRecord(E, _keymap);
-
-                _textWriter.WriteLine($"{Elapsed.Invoke()}: {record.Display}");
-            };
 
             return textWriter;
         }

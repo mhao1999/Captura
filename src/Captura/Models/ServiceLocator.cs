@@ -45,8 +45,6 @@ namespace Captura
 
         public CustomImageOverlaysViewModel CustomImageOverlays => ServiceProvider.Get<CustomImageOverlaysViewModel>();
 
-        public CustomOverlaysViewModel CustomOverlays => ServiceProvider.Get<CustomOverlaysViewModel>();
-
         public ViewConditionsModel ViewConditions => ServiceProvider.Get<ViewConditionsModel>();
 
         public TimerModel TimerModel => ServiceProvider.Get<TimerModel>();

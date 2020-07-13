@@ -18,7 +18,6 @@ namespace Captura.MouseKeyHook.Steps
         volatile bool _recording;
         readonly StepsSettings _stepsSettings;
         readonly MouseClickSettings _mouseClickSettings;
-        readonly KeystrokesSettings _keystrokesSettings;
         readonly KeymapViewModel _keymap;
         bool _modifierSingleDown;
 
@@ -48,7 +47,7 @@ namespace Captura.MouseKeyHook.Steps
             Hook.MouseClick += (S, E) =>
             {
                 var step = new MouseClickStep(_mouseClickSettings,
-                    _keystrokesSettings, E,
+                    E,
                     _keymap);
 
                 OnNext(step);
@@ -57,7 +56,7 @@ namespace Captura.MouseKeyHook.Steps
             Hook.MouseDoubleClick += (S, E) =>
             {
                 var step = new MouseClickStep(_mouseClickSettings,
-                    _keystrokesSettings, E,
+                    E,
                     _keymap);
 
                 OnNext(step);
@@ -67,7 +66,7 @@ namespace Captura.MouseKeyHook.Steps
             {
                 var step = new MouseDragBeginStep(E.Location,
                     _mouseClickSettings,
-                    _keystrokesSettings,
+                    
                     _keymap);
 
                 OnNext(step);
@@ -77,7 +76,7 @@ namespace Captura.MouseKeyHook.Steps
             {
                 var step = new MouseDragStep(E.Location,
                     _mouseClickSettings,
-                    _keystrokesSettings,
+                    
                     _keymap);
 
                 OnNext(step);
@@ -90,7 +89,7 @@ namespace Captura.MouseKeyHook.Steps
                 {
                     var step = new ScrollStep(E,
                         _mouseClickSettings,
-                        _keystrokesSettings,
+                        
                         _keymap);
 
                     OnNext(step);
@@ -111,7 +110,7 @@ namespace Captura.MouseKeyHook.Steps
                 {
                     _modifierSingleDown = true;
                 }
-                else OnNext(new KeyStep(_keystrokesSettings, record));
+                
             };
 
             Hook.KeyUp += (S, E) =>
@@ -124,10 +123,7 @@ namespace Captura.MouseKeyHook.Steps
                     || display == _keymap.Alt
                     || display == _keymap.Shift)
                 {
-                    if (_modifierSingleDown)
-                    {
-                        OnNext(new KeyStep(_keystrokesSettings, record));
-                    }
+
                 }
             };
 
@@ -148,7 +144,6 @@ namespace Captura.MouseKeyHook.Steps
             IVideoFileWriter VideoWriter,
             IImageProvider ImageProvider,
             MouseClickSettings MouseClickSettings,
-            KeystrokesSettings KeystrokesSettings,
             StepsSettings StepsSettings,
             KeymapViewModel KeymapViewModel)
         {
@@ -157,7 +152,6 @@ namespace Captura.MouseKeyHook.Steps
             _imageProvider = ImageProvider;
             _stepsSettings = StepsSettings;
             _mouseClickSettings = MouseClickSettings;
-            _keystrokesSettings = KeystrokesSettings;
             _keymap = KeymapViewModel;
 
             var stepsObservable = Observe(_hook, _cancellationTokenSource.Token, out var shotObservable);

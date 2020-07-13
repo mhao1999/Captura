@@ -12,8 +12,7 @@ namespace Captura.MouseKeyHook.Steps
 
         public ScrollStep(MouseEventArgs Args,
             MouseClickSettings Settings,
-            KeystrokesSettings KeystrokesSettings,
-            KeymapViewModel Keymap) : base(KeystrokesSettings, Keymap)
+            KeymapViewModel Keymap) : base(Keymap)
         {
             this.Args = Args;
 

@@ -12,8 +12,7 @@ namespace Captura.MouseKeyHook.Steps
 
         public MouseDragStep(Point EndPoint,
             MouseClickSettings Settings,
-            KeystrokesSettings KeystrokesSettings,
-            KeymapViewModel Keymap) : base(KeystrokesSettings, Keymap)
+            KeymapViewModel Keymap) : base(Keymap)
         {
             this.EndPoint = EndPoint;
             _settings = Settings;

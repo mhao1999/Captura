@@ -40,10 +40,6 @@ namespace Captura.ViewModels
                     _settings.Clicks.Display = !_settings.Clicks.Display;
                     break;
 
-                case ServiceName.ToggleKeystrokes:
-                    _settings.Keystrokes.Display = !_settings.Keystrokes.Display;
-                    break;
-
                 case ServiceName.ToggleRegionPicker:
                     // Stop any recording in progress
                     if (_recordingViewModel.RecorderState.Value != RecorderState.NotRecording)

@@ -213,7 +213,6 @@ namespace Captura.ViewModels
                 videoEncoder,
                 imgProvider,
                 Settings.Clicks,
-                Settings.Keystrokes,
                 Settings.Steps,
                 _keymap);
             
@@ -420,21 +419,6 @@ namespace Captura.ViewModels
             // No mouse and webcam overlays in webcam mode
 
             var clickSettings = Settings.Clicks;
-
-            yield return new MouseKeyOverlay(MouseKeyHook,
-                clickSettings,
-                Settings.Keystrokes,
-                _keymap,
-                CurrentFileName,
-                () => _timerModel.TimeSpan);
-
-            yield return new ElapsedOverlay(Settings.Elapsed, () => _timerModel.TimeSpan);
-
-            // Text Overlays
-            foreach (var overlay in Settings.TextOverlays)
-            {
-                yield return new CustomOverlay(overlay);
-            }
 
             // Image Overlays
             foreach (var overlay in Settings.ImageOverlays.Where(M => M.Display))

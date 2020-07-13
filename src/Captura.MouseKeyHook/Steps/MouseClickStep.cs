@@ -15,9 +15,8 @@ namespace Captura.MouseKeyHook.Steps
         const int DoubleClickDelta = 500;
 
         public MouseClickStep(MouseClickSettings Settings,
-            KeystrokesSettings KeystrokesSettings,
             MouseEventArgs Args,
-            KeymapViewModel Keymap) : base(KeystrokesSettings, Keymap)
+            KeymapViewModel Keymap) : base(Keymap)
         {
             _settings = Settings;
             this.Args = Args;

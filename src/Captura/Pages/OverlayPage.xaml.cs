@@ -94,43 +94,6 @@ namespace Captura
             return control;
         }
 
-        LayerFrame Text(TextOverlaySettings Settings, string Text)
-        {
-            var control = Generate(Settings, Text, Settings.BackgroundColor.ToWpfColor());
-
-            var vm = new TextOverlayReactor(Settings);
-
-            control.Label.BindOne(FontFamilyProperty, vm.FontFamily);
-            control.Label.BindOne(FontSizeProperty, vm.FontSize);
-
-            // Border.PaddingProperty is different from PaddingProperty
-            control.Border.BindOne(Border.PaddingProperty, vm.Padding);
-
-            control.Label.BindOne(ForegroundProperty, vm.Foreground);
-            control.Border.BindOne(BackgroundProperty, vm.Background);
-
-            control.Border.BindOne(Border.BorderThicknessProperty, vm.BorderThickness);
-            control.Border.BindOne(Border.BorderBrushProperty, vm.BorderBrush);
-            control.Border.BindOne(Border.CornerRadiusProperty, vm.CornerRadius);
-
-            return control;
-        }
-
-        LayerFrame Keystrokes(KeystrokesSettings Settings)
-        {
-            var control = Text(Settings, "Keystrokes");
-
-            var visibilityProp = Settings
-                .ObserveProperty(M => M.SeparateTextFile)
-                .Select(M => M ? Visibility.Collapsed : Visibility.Visible)
-                .ToReadOnlyReactivePropertySlim();
-
-            control.BindOne(VisibilityProperty, visibilityProp);
-
-            return control;
-        }
-
-        readonly List<LayerFrame> _textOverlays = new List<LayerFrame>();
         readonly List<LayerFrame> _imageOverlays = new List<LayerFrame>();
 
         void UpdateOverlays<TSettings>(IEnumerable<TSettings> Settings,
@@ -154,29 +117,6 @@ namespace Captura
 
                 Panel.SetZIndex(layerFrame, ZIndex);
             }
-        }
-
-        void UpdateTextOverlays(IEnumerable<CustomOverlaySettings> Settings)
-        {
-            UpdateOverlays(Settings, _textOverlays, Setting =>
-            {
-                var control = Text(Setting, Setting.Text);
-
-                var visibilityProp = Setting
-                    .ObserveProperty(M => M.Display)
-                    .Select(M => M ? Visibility.Visible : Visibility.Collapsed)
-                    .ToReadOnlyReactivePropertySlim();
-
-                control.BindOne(VisibilityProperty, visibilityProp);
-
-                var textProp = Setting
-                    .ObserveProperty(M => M.Text)
-                    .ToReadOnlyReactivePropertySlim();
-
-                control.Label.BindOne(ContentProperty, textProp);
-
-                return control;
-            }, false, 1);
         }
 
         void UpdateImageOverlays(IEnumerable<CustomImageOverlaySettings> Settings)
@@ -234,17 +174,6 @@ namespace Captura
 
             PrepareMousePointer(settings.MousePointerOverlay);
             PrepareMouseClick(settings.Clicks);
-
-            var keystrokes = Keystrokes(settings.Keystrokes);
-            AddToGrid(keystrokes, false);
-
-            var elapsed = Text(settings.Elapsed, "00:00:00");
-            AddToGrid(elapsed, false);
-
-            var textOverlayVm = ServiceProvider.Get<CustomOverlaysViewModel>();
-
-            UpdateTextOverlays(textOverlayVm.Collection);
-            (textOverlayVm.Collection as INotifyCollectionChanged).CollectionChanged += (S, E) => UpdateTextOverlays(textOverlayVm.Collection);
 
             var imgOverlayVm = ServiceProvider.Get<CustomImageOverlaysViewModel>();
 

@@ -80,18 +80,12 @@ namespace Captura
         };
 
         public MouseClickSettings Clicks { get; set; } = new MouseClickSettings();
-        
-        public KeystrokesSettings Keystrokes { get; set; } = new KeystrokesSettings();
-
-        public TextOverlaySettings Elapsed { get; set; } = new TextOverlaySettings();
 
         public VisualSettings UI { get; } = new VisualSettings();
 
         public VideoSettings Video { get; } = new VideoSettings();
 
         public AudioSettings Audio { get; } = new AudioSettings();
-
-        public ObservableCollection<CustomOverlaySettings> TextOverlays { get; } = new ObservableCollection<CustomOverlaySettings>();
 
         public ObservableCollection<CustomImageOverlaySettings> ImageOverlays { get; } = new ObservableCollection<CustomImageOverlaySettings>();
 
