@@ -27,12 +27,6 @@ namespace Captura
 
         public IFpsManager FpsManager => ServiceProvider.Get<IFpsManager>();
 
-        public LicensesViewModel LicensesViewModel => ServiceProvider.Get<LicensesViewModel>();
-
-        public CrashLogsViewModel CrashLogsViewModel => ServiceProvider.Get<CrashLogsViewModel>();
-
-        public FileNameFormatViewModel FileNameFormatViewModel => ServiceProvider.Get<FileNameFormatViewModel>();
-
         public SoundsViewModel SoundsViewModel => ServiceProvider.Get<SoundsViewModel>();
 
         public KeymapViewModel Keymap => ServiceProvider.Get<KeymapViewModel>();

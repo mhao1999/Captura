@@ -7,9 +7,6 @@ namespace Captura.ViewModels
     {
         public void OnLoad(IBinder Binder)
         {
-            Binder.BindSingleton<CrashLogsViewModel>();
-            Binder.BindSingleton<FileNameFormatViewModel>();
-            Binder.BindSingleton<LicensesViewModel>();
             Binder.BindSingleton<SoundsViewModel>();
             Binder.BindSingleton<RecentViewModel>();
             Binder.BindSingleton<UpdateCheckerViewModel>();
