@@ -9,20 +9,15 @@ namespace Captura.Models
     {
         readonly ISystemTray _systemTray;
         readonly Settings _settings;
-        readonly ILocalizationProvider _loc;
         readonly IRecentList _recentList;
 
         public DiskWriter(ISystemTray SystemTray,
             Settings Settings,
-            ILocalizationProvider Loc,
             IRecentList RecentList)
         {
             _systemTray = SystemTray;
             _settings = Settings;
-            _loc = Loc;
             _recentList = RecentList;
-
-            Loc.LanguageChanged += L => RaisePropertyChanged(nameof(Display));
         }
 
         public Task Save(IBitmapImage Image, ImageFormats Format, string FileName)
@@ -51,7 +46,7 @@ namespace Captura.Models
             return Task.CompletedTask;
         }
 
-        public string Display => _loc.Disk;
+        public string Display => "硬盘";
 
         bool _active;
 

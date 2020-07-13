@@ -5,10 +5,10 @@ namespace Captura.Video
     // ReSharper disable once ClassNeverInstantiated.Global
     public class FullScreenSourceProvider : VideoSourceProviderBase
     {
-        public FullScreenSourceProvider(ILocalizationProvider Loc,
+        public FullScreenSourceProvider(
             IIconSet Icons,
             IPlatformServices PlatformServices,
-            VideoSettings VideoSettings) : base(Loc)
+            VideoSettings VideoSettings) : base()
         {
             Source = new FullScreenItem(PlatformServices, VideoSettings);
             Icon = Icons.MultipleMonitor;
@@ -16,7 +16,7 @@ namespace Captura.Video
 
         public override IVideoItem Source { get; }
 
-        public override string Name => Loc.FullScreen;
+        public override string Name => "FullScreen";
 
         public override string Description { get; } = "Record Fullscreen.";
 

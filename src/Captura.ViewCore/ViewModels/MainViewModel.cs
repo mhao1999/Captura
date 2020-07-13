@@ -28,12 +28,11 @@ namespace Captura.ViewModels
         public IReadOnlyReactiveProperty<string> OutFolderDisplay { get; }
 
         public MainViewModel(Settings Settings,
-            ILocalizationProvider Loc,
             HotKeyManager HotKeyManager,
             IPreviewWindow PreviewWindow,
             IDialogService DialogService,
             RecordingModel RecordingModel,
-            RememberByName RememberByName) : base(Settings, Loc)
+            RememberByName RememberByName) : base(Settings)
         {
             _dialogService = DialogService;
             _rememberByName = RememberByName;
@@ -68,20 +67,6 @@ namespace Captura.ViewModels
             }
         }
 
-        public static IEnumerable<ObjectLocalizer<Alignment>> XAlignments { get; } = new[]
-        {
-            new ObjectLocalizer<Alignment>(Alignment.Start, nameof(ILocalizationProvider.Left)),
-            new ObjectLocalizer<Alignment>(Alignment.Center, nameof(ILocalizationProvider.Center)),
-            new ObjectLocalizer<Alignment>(Alignment.End, nameof(ILocalizationProvider.Right))
-        };
-
-        public static IEnumerable<ObjectLocalizer<Alignment>> YAlignments { get; } = new[]
-        {
-            new ObjectLocalizer<Alignment>(Alignment.Start, nameof(ILocalizationProvider.Top)),
-            new ObjectLocalizer<Alignment>(Alignment.Center, nameof(ILocalizationProvider.Center)),
-            new ObjectLocalizer<Alignment>(Alignment.End, nameof(ILocalizationProvider.Bottom))
-        };
-
         void OpenOutputFolder()
         {
             Process.Start(Settings.GetOutputPath());
@@ -100,7 +85,7 @@ namespace Captura.ViewModels
                 // Error can happen if current folder is inaccessible
             }
 
-            var folder = _dialogService.PickFolder(currentFolder, Loc.SelectOutFolder);
+            var folder = _dialogService.PickFolder(currentFolder, "选择输出目录");
 
             if (folder != null)
                 Settings.OutPath = folder;

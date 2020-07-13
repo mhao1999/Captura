@@ -5,15 +5,11 @@ namespace Captura.Hotkeys
 {
     public class Service : NotifyPropertyChanged
     {
-        readonly ILocalizationProvider _loc;
 
         public Service(ServiceName ServiceName)
         {
             this.ServiceName = ServiceName;
 
-            _loc = ServiceProvider.Get<ILocalizationProvider>();
-
-            _loc.LanguageChanged += L => RaisePropertyChanged(nameof(Description));
         }
 
         ServiceName _serviceName;
@@ -38,28 +34,28 @@ namespace Captura.Hotkeys
             switch (ServiceName)
             {
                 case ServiceName.None:
-                    return _loc.None;
+                    return "没有";
 
                 case ServiceName.Recording:
-                    return _loc.StartStopRecording;
+                    return "开始/停止录制";
 
                 case ServiceName.Pause:
-                    return _loc.PauseResumeRecording;
+                    return "暂停/继续录制";
 
                 case ServiceName.ScreenShot:
-                    return _loc.ScreenShot;
+                    return "截图";
 
                 case ServiceName.ActiveScreenShot:
-                    return _loc.ScreenShotActiveWindow;
+                    return "截取当前活动窗口";
 
                 case ServiceName.DesktopScreenShot:
-                    return _loc.ScreenShotDesktop;
+                    return "截取桌面";
 
                 case ServiceName.ToggleMouseClicks:
-                    return _loc.ToggleMouseClicks;
+                    return "切换鼠标点击";
 
                 case ServiceName.ToggleKeystrokes:
-                    return _loc.ToggleKeystrokes;
+                    return "切换按键";
 
                 case ServiceName.ScreenShotRegion:
                     return "Screenshot (Region)";

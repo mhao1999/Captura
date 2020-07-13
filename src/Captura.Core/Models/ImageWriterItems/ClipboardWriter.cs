@@ -8,29 +8,24 @@ namespace Captura.Models
     {
         readonly ISystemTray _systemTray;
         readonly IClipboardService _clipboard;
-        readonly ILocalizationProvider _loc;
 
         public ClipboardWriter(ISystemTray SystemTray,
-            ILocalizationProvider Loc,
             IClipboardService Clipboard)
         {
             _systemTray = SystemTray;
-            _loc = Loc;
             _clipboard = Clipboard;
-
-            Loc.LanguageChanged += L => RaisePropertyChanged(nameof(Display));
         }
 
         public Task Save(IBitmapImage Image, ImageFormats Format, string FileName)
         {
             _clipboard.SetImage(Image);
 
-            _systemTray.ShowNotification(new TextNotification(_loc.ImgSavedClipboard));
+            _systemTray.ShowNotification(new TextNotification("图片已复制到剪贴板"));
 
             return Task.CompletedTask;
         }
 
-        public string Display => _loc.Clipboard;
+        public string Display => "剪贴板";
 
         bool _active;
 

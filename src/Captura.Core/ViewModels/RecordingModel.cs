@@ -32,13 +32,12 @@ namespace Captura.ViewModels
         #endregion
 
         public RecordingModel(Settings Settings,
-            ILocalizationProvider Loc,
             ISystemTray SystemTray,
             IPreviewWindow PreviewWindow,
             IAudioSource AudioSource,
             KeymapViewModel Keymap,
             TimerModel TimerModel,
-            IFpsManager FpsManager) : base(Settings, Loc)
+            IFpsManager FpsManager) : base(Settings)
         {
             _systemTray = SystemTray;
             _previewWindow = PreviewWindow;
@@ -96,7 +95,7 @@ namespace Captura.ViewModels
 
                 RecorderState = RecorderState.Paused;
 
-                _pauseNotification = new TextNotification(Loc.Paused, OnPauseExecute);
+                _pauseNotification = new TextNotification("录制已暂停", OnPauseExecute);
                 _systemTray.ShowNotification(_pauseNotification);
             }
         }

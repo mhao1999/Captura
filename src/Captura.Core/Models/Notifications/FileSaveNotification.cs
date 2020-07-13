@@ -11,7 +11,6 @@ namespace Captura
     public class FileSaveNotification : NotifyPropertyChanged, INotification
     {
         readonly FileRecentItem _recentItem;
-        readonly ILocalizationProvider _loc;
         readonly IIconSet _icons;
 
         string _fileName;
@@ -20,7 +19,6 @@ namespace Captura
         {
             _recentItem = RecentItem;
 
-            _loc = ServiceProvider.Get<ILocalizationProvider>();
             _icons = ServiceProvider.Get<IIconSet>();
 
             _fileName = RecentItem.FileName;
@@ -45,7 +43,7 @@ namespace Captura
             var deleteAction = new NotificationAction
             {
                 Icon = _icons.Delete,
-                Name = _loc.Delete,
+                Name = "删除",
                 Color = "LightPink"
             };
 
@@ -66,7 +64,7 @@ namespace Captura
 
             _notificationActions.Add(deleteAction);
 
-            PrimaryText = _recentItem.FileType == RecentFileType.Video ? _loc.VideoSaved : _loc.AudioSaved;
+            PrimaryText = _recentItem.FileType == RecentFileType.Video ? "视频已保存" : "音频已保存";
             Finished = true;
         }
 

@@ -8,9 +8,9 @@ namespace Captura.Video
     // ReSharper disable once ClassNeverInstantiated.Global
     public class NoVideoSourceProvider : VideoSourceProviderBase
     {
-        public NoVideoSourceProvider(ILocalizationProvider Loc,
+        public NoVideoSourceProvider(
             IIconSet Icons,
-            IEnumerable<IAudioWriterItem> AudioWriterItems) : base(Loc)
+            IEnumerable<IAudioWriterItem> AudioWriterItems) : base()
         {
             Sources = AudioWriterItems
                 .Select(M => new NoVideoItem(M))
@@ -43,7 +43,7 @@ namespace Captura.Video
 
         public override IVideoItem Source => _selectedSource;
 
-        public override string Name => Loc.OnlyAudio;
+        public override string Name => "OnlyAudio";
 
         public override string Description { get; } = @"No Video recorded.
 Can be used for audio-only recording.

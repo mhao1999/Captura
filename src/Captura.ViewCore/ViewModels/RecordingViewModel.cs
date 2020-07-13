@@ -40,10 +40,9 @@ namespace Captura.ViewModels
             VideoWritersViewModel VideoWritersViewModel,
             ISystemTray SystemTray,
             IMainWindow MainWindow,
-            ILocalizationProvider Loc,
             IAudioPlayer AudioPlayer,
             IRecentList RecentList,
-            AudioSourceViewModel AudioSourceViewModel) : base(Settings, Loc)
+            AudioSourceViewModel AudioSourceViewModel) : base(Settings)
         {
             _recordingModel = RecordingModel;
             _timerModel = TimerModel;

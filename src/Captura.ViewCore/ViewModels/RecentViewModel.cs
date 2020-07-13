@@ -14,9 +14,8 @@ namespace Captura.ViewModels
         public ICommand ClearCommand { get; }
 
         public RecentViewModel(Settings Settings,
-            ILocalizationProvider Loc,
             IRecentList Recent)
-            : base(Settings, Loc)
+            : base(Settings)
         {
             Items = Recent.Items;
 

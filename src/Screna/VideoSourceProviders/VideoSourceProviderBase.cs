@@ -4,13 +4,10 @@ namespace Captura.Video
 {
     public abstract class VideoSourceProviderBase : NotifyPropertyChanged, IVideoSourceProvider
     {
-        protected readonly ILocalizationProvider Loc;
 
-        protected VideoSourceProviderBase(ILocalizationProvider Loc)
+        protected VideoSourceProviderBase()
         {
-            this.Loc = Loc;
 
-            Loc.LanguageChanged += L => RaisePropertyChanged(nameof(Name));
         }
 
         public virtual bool SupportsStepsMode => true;

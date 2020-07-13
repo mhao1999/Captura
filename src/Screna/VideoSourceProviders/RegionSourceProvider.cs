@@ -9,10 +9,10 @@ namespace Captura.Video
         readonly IRegionProvider _regionProvider;
         readonly IVideoSourcePicker _videoSourcePicker;
 
-        public RegionSourceProvider(ILocalizationProvider Loc,
+        public RegionSourceProvider(
             IRegionProvider RegionProvider,
             IVideoSourcePicker VideoSourcePicker,
-            IIconSet Icons) : base(Loc)
+            IIconSet Icons) : base()
         {
             _videoSourcePicker = VideoSourcePicker;
             _regionProvider = RegionProvider;
@@ -23,7 +23,7 @@ namespace Captura.Video
 
         public override IVideoItem Source { get; }
 
-        public override string Name => Loc.Region;
+        public override string Name => "Region";
 
         public override string Description { get; } = "Record region selected using Region Selector.";
 

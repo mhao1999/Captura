@@ -35,7 +35,6 @@ namespace Captura.Models
             RemoveCommand = new DelegateCommand(() => RemoveRequested?.Invoke());
 
             var icons = ServiceProvider.Get<IIconSet>();
-            var loc = ServiceProvider.Get<ILocalizationProvider>();
             var windowService = ServiceProvider.Get<IMainWindow>();
 
             Icon = GetIcon(FileType, icons);
@@ -43,12 +42,12 @@ namespace Captura.Models
 
             var list = new List<RecentAction>
             {
-                new RecentAction(loc.CopyPath, icons.Clipboard, () => this.FileName.WriteToClipboard())
+                new RecentAction("复制路径", icons.Clipboard, () => this.FileName.WriteToClipboard())
             };
 
             void AddTrimMedia()
             {
-                list.Add(new RecentAction(loc.Trim, icons.Trim, () => windowService.TrimMedia(this.FileName)));
+                list.Add(new RecentAction("裁剪", icons.Trim, () => windowService.TrimMedia(this.FileName)));
             }
 
             switch (FileType)
@@ -63,7 +62,7 @@ namespace Captura.Models
                     break;
             }
 
-            list.Add(new RecentAction(loc.Delete, icons.Delete, OnDelete));
+            list.Add(new RecentAction("删除", icons.Delete, OnDelete));
 
             Actions = list;
         }

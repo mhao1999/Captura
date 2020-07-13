@@ -20,7 +20,7 @@ namespace Captura.ViewModels
             Version = ServiceProvider.AppVersion;
         }
 
-        public AboutViewModel(Settings Settings, ILocalizationProvider Loc) : base(Settings, Loc)
+        public AboutViewModel(Settings Settings) : base(Settings)
         {
             AppVersion = "v" + Version.ToString(3);
 

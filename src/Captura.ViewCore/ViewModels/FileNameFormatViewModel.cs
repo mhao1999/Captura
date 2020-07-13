@@ -8,8 +8,8 @@ namespace Captura.ViewModels
     // ReSharper disable once ClassNeverInstantiated.Global
     public class FileNameFormatViewModel : ViewModelBase
     {
-        public FileNameFormatViewModel(Settings Settings, ILocalizationProvider Loc)
-            : base(Settings, Loc) { }
+        public FileNameFormatViewModel(Settings Settings)
+            : base(Settings) { }
 
         public IEnumerable<FileNameFormatGroup> FormatGroups { get; } = new []
         {
