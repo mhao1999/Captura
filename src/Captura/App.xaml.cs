@@ -19,7 +19,7 @@ namespace Captura
             SingleInstanceManager.SingleInstanceCheck();
 
             // Splash Screen should be created manually and after single-instance is checked
-            ShowSplashScreen();
+            //ShowSplashScreen();
         }
       
         void App_OnDispatcherUnhandledException(object Sender, DispatcherUnhandledExceptionEventArgs Args)
@@ -34,11 +34,11 @@ namespace Captura
 
         }
 
-        void ShowSplashScreen()
-        {
-            var splashScreen = new SplashScreen("Images/Logo.png");
-            splashScreen.Show(true);
-        }
+        //void ShowSplashScreen()
+        //{
+        //    var splashScreen = new SplashScreen("Images/Logo.png");
+        //    splashScreen.Show(true);
+        //}
 
         void Application_Startup(object Sender, StartupEventArgs Args)
         {

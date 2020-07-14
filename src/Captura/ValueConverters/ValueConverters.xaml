@@ -7,7 +7,6 @@
     <captura:NotNullConverter x:Key="NotNullConverter"/>
     <captura:NegatingConverter x:Key="NegatingConverter"/>
     <captura:StateToTrayIconSourceConverter x:Key="StateToTrayIconSourceConverter"/>
-    <captura:DrawingToWpfColorConverter x:Key="WpfColorConverter"/>
     <captura:InkToolToIconConverter x:Key="InkToolToIconConverter"/>
     <captura:TimeSpanToSecondsConverter x:Key="TimeSpanToSecondsConverter"/>
     <captura:SecondsToTimeSpanConverter x:Key="SecondsToTimeSpanConverter"/>
@@ -16,6 +15,5 @@
     <captura:GetTypeConverter x:Key="GetTypeConverter"/>
     <captura:StaticResourceConverter x:Key="StaticResourceConverter"/>
     <captura:IsLessThanConverter x:Key="IsLessThanConverter"/>
-    <captura:LanguageConverter x:Key="LanguageConverter"/>
     <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
 </ResourceDictionary>

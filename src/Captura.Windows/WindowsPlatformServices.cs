@@ -135,14 +135,14 @@ namespace Captura.Windows
             return match?.QueryInterface<Output1>();
         }
 
-        public IImageProvider GetAllScreensProvider(bool IncludeCursor, bool StepsMode)
-        {
-            if (!WindowsModule.ShouldUseGdi && !StepsMode)
-            {
-                return new DeskDuplFullScreenImageProvider(IncludeCursor, _previewWindow, this);
-            }
+        //public IImageProvider GetAllScreensProvider(bool IncludeCursor, bool StepsMode)
+        //{
+        //    if (!WindowsModule.ShouldUseGdi && !StepsMode)
+        //    {
+        //        return new DeskDuplFullScreenImageProvider(IncludeCursor, _previewWindow, this);
+        //    }
 
-            return GetRegionProvider(DesktopRectangle, IncludeCursor);
-        }
+        //    return GetRegionProvider(DesktopRectangle, IncludeCursor);
+        //}
     }
 }

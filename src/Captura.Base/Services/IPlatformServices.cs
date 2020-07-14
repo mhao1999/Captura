@@ -33,10 +33,10 @@ namespace Captura
             bool IncludeCursor,
             Func<Point> LocationFunction = null);
 
-        IImageProvider GetWindowProvider(IWindow Window, bool IncludeCursor);
+        //IImageProvider GetWindowProvider(IWindow Window, bool IncludeCursor);
 
-        IImageProvider GetScreenProvider(IScreen Screen, bool IncludeCursor, bool StepsMode);
+        //IImageProvider GetScreenProvider(IScreen Screen, bool IncludeCursor, bool StepsMode);
 
-        IImageProvider GetAllScreensProvider(bool IncludeCursor, bool StepsMode);
+        //IImageProvider GetAllScreensProvider(bool IncludeCursor, bool StepsMode);
     }
 }
