@@ -13,11 +13,9 @@ namespace Captura.MouseKeyHook
         #region Fields
         readonly IMouseKeyHook _hook;
         readonly IOverlay _mouseClickOverlay,
-            _keyOverlay,
             _scrollOverlay;
 
         readonly KeymapViewModel _keymap;
-        readonly TextWriter _textWriter;
         #endregion
         
         /// <summary>
@@ -59,7 +57,6 @@ namespace Captura.MouseKeyHook
             _mouseClickOverlay?.Draw(Editor, Transform);
             _scrollOverlay?.Draw(Editor, Transform);
 
-            _keyOverlay?.Draw(Editor, Transform);
         }
 
         /// <summary>
@@ -71,9 +68,6 @@ namespace Captura.MouseKeyHook
 
             _mouseClickOverlay?.Dispose();
             _scrollOverlay?.Dispose();
-            _keyOverlay?.Dispose();
-
-            _textWriter?.Dispose();
         }
     }
 }
