@@ -10,7 +10,7 @@
 
         public bool RecordMicrophone
         {
-            get => Get(false);
+            get => Get(true);
             set => Set(value);
         }
 

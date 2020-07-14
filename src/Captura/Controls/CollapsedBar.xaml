@@ -7,74 +7,9 @@
              DataContext="{Binding MainViewModel, Source={StaticResource ServiceLocator}}"
              mc:Ignorable="d">
     <Grid>
-        <Grid.Resources>
-            <Style TargetType="Path" x:Key="VideoSourceIcon" BasedOn="{StaticResource {x:Type Path}}">
-                <Setter Property="Width" Value="12"/>
-                <Setter Property="Height" Value="12"/>
-                <Setter Property="Margin" Value="0"/>
-                <Setter Property="Stretch" Value="Uniform"/>
-                <Setter Property="HorizontalAlignment" Value="Center"/>
-                <Setter Property="VerticalAlignment" Value="Center"/>
-                <Setter Property="Fill" Value="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType=ContentControl}}"/>
-            </Style>
-            <Style TargetType="captura:ModernToggleButton" BasedOn="{StaticResource {x:Type captura:ModernToggleButton}}">
-                <Setter Property="LayoutTransform">
-                    <Setter.Value>
-                        <ScaleTransform ScaleX="0.85" ScaleY="0.85"/>
-                    </Setter.Value>
-                </Setter>
-            </Style>
-        </Grid.Resources>
-        <Border CornerRadius="15,15,25,25"
-                BorderThickness="0"
-                Margin="0,2,0,0"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Bottom"
-                Width="70"
-                Height="33"
-                Background="{DynamicResource ButtonBackgroundHover}"/>
         <DockPanel>
-            <captura:ModernButton ToolTip="配置"
-                                  Click="OpenSettings"
-                                  Foreground="{DynamicResource Accent}"
-                                  IconData="{Binding Icons.Settings, Source={StaticResource ServiceLocator}}"
-                                  DockPanel.Dock="Right"
-                                  RenderTransformOrigin="0.5,0.5">
-                <captura:ModernButton.RenderTransform>
-                    <RotateTransform/>
-                </captura:ModernButton.RenderTransform>
-                <captura:ModernButton.Triggers>
-                    <EventTrigger RoutedEvent="captura:ModernButton.MouseEnter">
-                        <EventTrigger.Actions>
-                            <BeginStoryboard>
-                                <Storyboard>
-                                    <DoubleAnimation Storyboard.TargetProperty="RenderTransform.Angle"
-                                                     To="110"
-                                                     Duration="0:0:0.15"/>
-                                </Storyboard>
-                            </BeginStoryboard>
-                        </EventTrigger.Actions>
-                    </EventTrigger>
-                    <EventTrigger RoutedEvent="captura:ModernButton.MouseLeave">
-                        <EventTrigger.Actions>
-                            <BeginStoryboard>
-                                <Storyboard>
-                                    <DoubleAnimation Storyboard.TargetProperty="RenderTransform.Angle"
-                                                     To="0"
-                                                     Duration="0:0:0.15"/>
-                                </Storyboard>
-                            </BeginStoryboard>
-                        </EventTrigger.Actions>
-                    </EventTrigger>
-                </captura:ModernButton.Triggers>
-            </captura:ModernButton>
 
-            <captura:ModernButton ToolTip="打开输出目录"
-                                  Command="{Binding OpenOutputFolderCommand}"
-                                  IconData="{Binding Icons.Folder, Source={StaticResource ServiceLocator}}"
-                                  DockPanel.Dock="Right"/>
-
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Left">
                 <captura:ModernToggleButton ToolTip="Microphone"
                                             IconData="{Binding Icons.Mic, Source={StaticResource ServiceLocator}}"
                                             IsChecked="{Binding Settings.Audio.RecordMicrophone, Mode=TwoWay}"/>

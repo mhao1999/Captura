@@ -46,6 +46,8 @@ namespace Captura
 
                 JsonConvert.PopulateObject(json, this);
 
+                this.Audio.RecordMicrophone = true;
+
                 return true;
             }
             catch
