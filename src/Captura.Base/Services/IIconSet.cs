@@ -153,8 +153,6 @@ namespace Captura
 
         string Twitch { get; }
 
-        string Upload { get; }
-
         string Video { get; }
 
         string VideoFile { get; }
@@ -165,10 +163,7 @@ namespace Captura
 
         string Web { get; }
 
-        string Webcam { get; }
-
         string Window { get; }
 
-        string YouTube { get; }
     }
 }
