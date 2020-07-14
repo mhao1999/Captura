@@ -21,9 +21,7 @@ namespace Captura
             // Splash Screen should be created manually and after single-instance is checked
             ShowSplashScreen();
         }
-
-        public static CmdOptions CmdOptions { get; private set; }
-        
+      
         void App_OnDispatcherUnhandledException(object Sender, DispatcherUnhandledExceptionEventArgs Args)
         {
             var dir = Path.Combine(ServiceProvider.SettingsDir, "Crashes");
@@ -49,14 +47,6 @@ namespace Captura
             ServiceProvider.LoadModule(new CoreModule());
             ServiceProvider.LoadModule(new ViewCoreModule());
 
-            Parser.Default.ParseArguments<CmdOptions>(Args.Args)
-                .WithParsed(M => CmdOptions = M);
-
-            if (CmdOptions.Settings != null)
-            {
-                ServiceProvider.SettingsDir = CmdOptions.Settings;
-            }
-
             var settings = ServiceProvider.Get<Settings>();
 
             InitTheme(settings);
@@ -80,10 +70,9 @@ namespace Captura
 
         static void InitTheme(Settings Settings)
         {
-            if (!CmdOptions.Reset)
-            {
-                Settings.Load();
-            }
+
+            Settings.Load();
+
         }
     }
 }

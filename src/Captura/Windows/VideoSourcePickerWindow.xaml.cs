@@ -206,15 +206,6 @@ namespace Captura
             }
         }
 
-        public static IScreen PickScreen()
-        {
-            var picker = new VideoSourcePickerWindow(VideoPickerMode.Screen);
-
-            picker.ShowDialog();
-
-            return picker.SelectedScreen;
-        }
-
         public static IWindow PickWindow(Predicate<IWindow> Filter)
         {
             var picker = new VideoSourcePickerWindow(VideoPickerMode.Window)

@@ -7,8 +7,6 @@ namespace Captura.Video
     {
         IWindow PickWindow(Predicate<IWindow> Filter = null);
 
-        IScreen PickScreen();
-
         Rectangle? PickRegion();
     }
 }

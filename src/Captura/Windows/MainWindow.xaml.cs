@@ -21,7 +21,7 @@ namespace Captura
 
             _helper = ServiceProvider.Get<MainWindowHelper>();
 
-            _helper.MainViewModel.Init(!App.CmdOptions.NoPersist, !App.CmdOptions.Reset);
+            _helper.MainViewModel.Init(true, true);
 
             _helper.HotkeySetup.Setup();
 
@@ -34,7 +34,7 @@ namespace Captura
                 _helper.HotkeySetup.ShowUnregistered();
             };
 
-            if (App.CmdOptions.Tray || _helper.Settings.Tray.MinToTrayOnStartup)
+            if (_helper.Settings.Tray.MinToTrayOnStartup)
                 Hide();
 
             Closing += (Sender, Args) =>
