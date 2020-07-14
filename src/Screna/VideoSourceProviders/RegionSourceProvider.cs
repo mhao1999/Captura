@@ -31,41 +31,6 @@ namespace Captura.Video
         // Prevents opening multiple region pickers at the same time
         bool _picking;
 
-        public override bool OnSelect()
-        {
-            if (_picking)
-                return false;
-
-            _picking = true;
-
-            try
-            {
-                var wasVisible = _regionProvider.SelectorVisible;
-
-                _regionProvider.SelectorVisible = false;
-
-                var region = _videoSourcePicker.PickRegion();
-
-                if (region == null)
-                {
-                    // Show again if was already visible
-                    _regionProvider.SelectorVisible = wasVisible;
-
-                    return false;
-                }
-
-                _regionProvider.SelectedRegion = region.Value;
-
-                _regionProvider.SelectorVisible = true;
-            }
-            finally
-            {
-                _picking = false;
-            }
-
-            return true;
-        }
-
         public override void OnUnselect()
         {
             _regionProvider.SelectorVisible = false;

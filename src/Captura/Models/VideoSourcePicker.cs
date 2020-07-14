@@ -11,9 +11,5 @@ namespace Captura.Video
             return VideoSourcePickerWindow.PickWindow(Filter);
         }
 
-        public Rectangle? PickRegion()
-        {
-            return RegionPickerWindow.PickRegion();
-        }
     }
 }
