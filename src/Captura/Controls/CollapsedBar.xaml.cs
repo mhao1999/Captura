@@ -9,9 +9,5 @@ namespace Captura
             InitializeComponent();
         }
 
-        void OpenSettings(object Sender, RoutedEventArgs E)
-        {
-            SettingsWindow.ShowInstance();
-        }
     }
 }
