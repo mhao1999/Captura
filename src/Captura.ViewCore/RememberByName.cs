@@ -111,11 +111,6 @@ namespace Captura.Models
             if (mic != null)
                 _audioSourceViewModel.SelectedMicrophone = mic;
 
-            // Restore Loopback Speaker
-            var speaker = _audioSourceViewModel.AvailableSpeakers.FirstOrDefault(M => M.Name == _settings.Audio.Speaker);
-
-            if (speaker != null)
-                _audioSourceViewModel.SelectedSpeaker = speaker;
         }
     }
 }
