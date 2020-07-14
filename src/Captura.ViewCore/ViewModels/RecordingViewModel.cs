@@ -71,18 +71,11 @@ namespace Captura.ViewModels
                         .Video
                         .ObserveProperty(M => M.RecorderMode)
                         .Select(M => M == RecorderMode.Steps),
-                    VideoSourcesViewModel
-                        .ObserveProperty(M => M.SelectedVideoSourceKind)
-                        .Select(M => M.SupportsStepsMode),
                 }
                 .CombineLatest(M =>
                 {
                     var audioEnabled = M[0];
                     var stepsMode = M[1];
-                    var supportsStepsMode = M[2];
-
-                    if (stepsMode)
-                        return supportsStepsMode;
 
                     return true;
                 })

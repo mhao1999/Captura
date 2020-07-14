@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Drawing;
 using Captura.Video;
 
 namespace Captura.ViewModels
@@ -6,13 +7,13 @@ namespace Captura.ViewModels
     // ReSharper disable once ClassNeverInstantiated.Global
     public class VideoSourcesViewModel : NotifyPropertyChanged
     {
-        readonly FullScreenSourceProvider _fullScreenProvider;
+        readonly RegionSourceProvider _fullScreenProvider;
         readonly Settings _settings;
         public NoVideoSourceProvider NoVideoSourceProvider { get; }
 
         public IEnumerable<IVideoSourceProvider> VideoSources { get; }
 
-        public VideoSourcesViewModel(FullScreenSourceProvider FullScreenProvider,
+        public VideoSourcesViewModel(RegionSourceProvider FullScreenProvider,
             NoVideoSourceProvider NoVideoSourceProvider,
             IEnumerable<IVideoSourceProvider> SourceProviders,
             Settings Settings)
@@ -62,7 +63,10 @@ namespace Captura.ViewModels
         public IVideoSourceProvider SelectedVideoSourceKind
         {
             get => _videoSourceKind;
-            set => ChangeSource(value, true);
+            set // ChangeSource(value, true);
+            {
+
+            }
         }
 
         public void RestoreSourceKind(IVideoSourceProvider SourceProvider)

@@ -206,9 +206,6 @@
                     </ListView.ItemContainerStyle>
                 </ListView>
 
-                <CheckBox Content="Include Scrolls"
-                          IsChecked="{Binding Settings.Steps.IncludeScrolls}"
-                          Margin="0,5"/>
             </StackPanel>
 
             <GridSplitter IsEnabled="False"
