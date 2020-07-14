@@ -22,12 +22,6 @@ namespace Captura.ViewModels
                 .Select(M => M is RegionSourceProvider)
                 .ToReadOnlyReactivePropertySlim();
 
-            IsStepsMode = Settings
-                .Video
-                .ObserveProperty(M => M.RecorderMode)
-                .Select(M => M == RecorderMode.Steps)
-                .ToReadOnlyReactivePropertySlim();
-
             MultipleVideoWriters = VideoWritersViewModel.AvailableVideoWriters
                 .ObserveProperty(M => M.Count)
                 .Select(M => M > 1)
@@ -38,13 +32,6 @@ namespace Captura.ViewModels
                 .Select(M => M is DiscardWriterProvider)
                 .Select(M => !M)
                 .ToReadOnlyReactivePropertySlim();
-
-            IsReplayMode = Settings
-                .Video
-                .ObserveProperty(M => M.RecorderMode)
-                .Select(M => M == RecorderMode.Replay)
-                .ToReadOnlyReactivePropertySlim();
-
 
             IsEnabled = RecordingModel
                 .ObserveProperty(M => M.RecorderState)
@@ -67,25 +54,11 @@ namespace Captura.ViewModels
 
         public IReadOnlyReactiveProperty<bool> IsAudioMode { get; }
 
-        public IReadOnlyReactiveProperty<bool> IsStepsMode { get; }
-
-        public IReadOnlyReactiveProperty<bool> IsWebcamMode { get; }
-
         public IReadOnlyReactiveProperty<bool> MultipleVideoWriters { get; }
-
-        public IReadOnlyReactiveProperty<bool> IsFFmpeg { get; }
 
         public IReadOnlyReactiveProperty<bool> IsVideoQuality { get; }
 
-        public IReadOnlyReactiveProperty<bool> CanChangeWebcam { get; }
-
         public IReadOnlyReactiveProperty<bool> IsEnabled { get; }
-
-        public IReadOnlyReactiveProperty<bool> CanWebcamSeparateFile { get; }
-
-        public IReadOnlyReactiveProperty<bool> IsAroundMouseMode { get; }
-
-        public IReadOnlyReactiveProperty<bool> IsReplayMode { get; }
 
         public IReadOnlyReactiveProperty<bool> ShowSourceNameBox { get; }
 

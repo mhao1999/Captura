@@ -35,20 +35,6 @@ namespace Captura.ViewModels
         {
             try
             {
-                if (NewSourceProvider == null || _videoSourceKind == NewSourceProvider)
-                    return;
-
-                // Doesn't support Steps mode
-                if (_settings.Video.RecorderMode == RecorderMode.Steps && !NewSourceProvider.SupportsStepsMode)
-                    return;
-
-                if (CallOnSelect && !NewSourceProvider.OnSelect())
-                {
-                    return;
-                }
-
-                _videoSourceKind?.OnUnselect();
-
                 _videoSourceKind = NewSourceProvider;
             }
             finally

@@ -79,9 +79,6 @@
                                             IconData="{Binding Icons.Mic, Source={StaticResource ServiceLocator}}"
                                             IsChecked="{Binding Settings.Audio.RecordMicrophone, Mode=TwoWay}"/>
 
-                <captura:ModernToggleButton ToolTip="Speaker"
-                                            IconData="{Binding Icons.Speaker, Source={StaticResource ServiceLocator}}"
-                                            IsChecked="{Binding Settings.Audio.RecordSpeaker, Mode=TwoWay}"/>
             </StackPanel>
 
             <captura:VideoSourceKindList/>
