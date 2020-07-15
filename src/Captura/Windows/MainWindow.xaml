@@ -154,26 +154,24 @@
                                         VerticalAlignment="Center">
                                 <Label Content="{Binding TimerModel.TimeSpan, Source={StaticResource ServiceLocator}}"/>
 
-                                <Label Content="{Binding Settings.Duration, Converter={StaticResource SecondsToTimeSpanConverter}}"
+                                <!--<Label Content="{Binding Settings.Duration, Converter={StaticResource SecondsToTimeSpanConverter}}"
                                        ContentStringFormat="{}{0}"
                                        HorizontalAlignment="Center"
                                        FontSize="8"
-                                       Visibility="{Binding Settings.Duration, Converter={StaticResource NotNullConverter}}"/>
+                                       Visibility="{Binding Settings.Duration, Converter={StaticResource NotNullConverter}}"/>-->
                             </StackPanel>
 
-                            <Label Visibility="{Binding Visibility, ElementName=DurationLabel, Converter={StaticResource NegatingConverter}}"
+                            <!--<Label Visibility="{Binding Visibility, ElementName=DurationLabel, Converter={StaticResource NegatingConverter}}"
                                    Margin="0,-1"
                                    Style="{StaticResource CountdownLabel}"
                                    HorizontalAlignment="Center"
-                                   Content="{Binding TimerModel.Countdown, Source={StaticResource ServiceLocator}}"/>
+                                   Content="{Binding TimerModel.Countdown, Source={StaticResource ServiceLocator}}"/>-->
                         </Grid>
                     </DockPanel>
                 </Grid>
             </Expander.Header>
             <DockPanel Margin="-5,0"
                        Height="300">
-                <Frame Source="../Pages/MainPage.xaml"
-                       DockPanel.Dock="Top"/>
 
                 <GridSplitter Height="1"
                               Margin="0,2"
@@ -198,11 +196,11 @@
                     <Label Content="Preview"
                            HorizontalAlignment="Center"
                            Opacity="0.7"/>
-                    <WindowsFormsHost Name="WinFormsHost"
+                    <!--<WindowsFormsHost Name="WinFormsHost"
                                       Visibility="Collapsed">
                         <wf:PictureBox x:Name="DisplayImage"
                                        SizeMode="Zoom"/>
-                    </WindowsFormsHost>
+                    </WindowsFormsHost>-->
                     <Image>
                         <Image.Source>
                             <interop:D3DImage x:Name="D3DImage"/>

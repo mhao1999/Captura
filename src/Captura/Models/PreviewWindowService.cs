@@ -48,7 +48,7 @@ namespace Captura.Video
 
             win.Dispatcher.Invoke(() =>
             {
-                win.DisplayImage.Image = null;
+                //win.DisplayImage.Image = null;
 
                 _lastFrame?.Dispose();
                 _lastFrame = Frame;
@@ -69,12 +69,12 @@ namespace Captura.Video
                         }
                         catch { return; }
 
-                        win.WinFormsHost.Visibility = Visibility.Visible;
-                        win.DisplayImage.Image = drawingFrame.Bitmap;
+                        //win.WinFormsHost.Visibility = Visibility.Visible;
+                        //win.DisplayImage.Image = drawingFrame.Bitmap;
                         break;
 
                     case Texture2DFrame texture2DFrame:
-                        win.WinFormsHost.Visibility = Visibility.Collapsed;
+                        //win.WinFormsHost.Visibility = Visibility.Collapsed;
                         if (_d3D9PreviewAssister == null)
                         {
                             _d3D9PreviewAssister = new D3D9PreviewAssister(ServiceProvider.Get<IPlatformServices>());
@@ -109,8 +109,8 @@ namespace Captura.Video
 
             win.Dispatcher.Invoke(() =>
             {
-                win.DisplayImage.Image = null;
-                win.WinFormsHost.Visibility = Visibility.Collapsed;
+                //win.DisplayImage.Image = null;
+                //win.WinFormsHost.Visibility = Visibility.Collapsed;
 
                 _lastFrame?.Dispose();
                 _lastFrame = null;
