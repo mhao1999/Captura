@@ -100,21 +100,6 @@ namespace Captura.Windows
             return new WindowProvider(Window, _previewWindow, IncludeCursor);
         }
 
-        public IImageProvider GetScreenProvider(IScreen Screen, bool IncludeCursor, bool StepsMode)
-        {
-            if (!WindowsModule.ShouldUseGdi && !StepsMode)
-            {
-                var output = FindOutput(Screen);
-
-                if (output != null)
-                {
-                    return new DeskDuplImageProvider(output, IncludeCursor, _previewWindow);
-                }
-            }
-
-            return GetRegionProvider(Screen.Rectangle, IncludeCursor);
-        }
-
         static Output1 FindOutput(IScreen Screen)
         {
             var outputs = new Factory1()
