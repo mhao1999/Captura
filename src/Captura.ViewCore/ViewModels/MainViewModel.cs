@@ -36,20 +36,10 @@ namespace Captura.ViewModels
             _dialogService = DialogService;
             _rememberByName = RememberByName;
 
-            OutFolderDisplay = Settings
-                .ObserveProperty(M => M.OutPath)
-                .Select(M => Settings.GetOutputPath())
-                .ToReadOnlyReactivePropertySlim();
-
             ShowPreviewCommand = new ReactiveCommand()
                 .WithSubscribe(PreviewWindow.Show);
 
             #region Commands
-            OpenOutputFolderCommand = new ReactiveCommand()
-                .WithSubscribe(OpenOutputFolder);
-
-            SelectOutputFolderCommand = new ReactiveCommand()
-                .WithSubscribe(SelectOutputFolder);
 
             TrayLeftClickCommand = new ReactiveCommand()
                 .WithSubscribe(() => HotKeyManager.FakeHotkey(Settings.Tray.LeftClickAction));

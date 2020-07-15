@@ -18,8 +18,6 @@ namespace Captura.ViewModels
 
             Binder.BindSingleton<AudioSourceViewModel>();
 
-            Binder.BindSingleton<CustomImageOverlaysViewModel>();
-
             Binder.Bind<IHotkeyActor, HotkeyActor>();
         }
 

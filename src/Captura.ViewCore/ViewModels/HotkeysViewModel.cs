@@ -14,26 +14,7 @@ namespace Captura.ViewModels
         {
             Hotkeys = HotKeyManager.Hotkeys;
 
-            ResetCommand = new ReactiveCommand()
-                .WithSubscribe(HotKeyManager.Reset);
-
-            AddCommand = new ReactiveCommand()
-                .WithSubscribe(HotKeyManager.Add);
-
-            RemoveCommand = new ReactiveCommand()
-                .WithSubscribe(M =>
-                {
-                    if (M is Hotkey hotkey)
-                    {
-                        HotKeyManager.Remove(hotkey);
-                    }
-                });
         }
 
-        public ICommand ResetCommand { get; }
-
-        public ICommand AddCommand { get; }
-
-        public ICommand RemoveCommand { get; }
     }
 }

@@ -35,8 +35,6 @@ namespace Captura
 
         public IIconSet Icons => ServiceProvider.Get<IIconSet>();
 
-        public CustomImageOverlaysViewModel CustomImageOverlays => ServiceProvider.Get<CustomImageOverlaysViewModel>();
-
         public TimerModel TimerModel => ServiceProvider.Get<TimerModel>();
 
         public AudioSourceViewModel AudioSource => ServiceProvider.Get<AudioSourceViewModel>();

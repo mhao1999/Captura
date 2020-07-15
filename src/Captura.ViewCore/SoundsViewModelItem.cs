@@ -14,18 +14,6 @@ namespace Captura.ViewModels
         {
             this.SoundKind = SoundKind;
             _settings = Settings;
-
-            ResetCommand = new ReactiveCommand()
-                .WithSubscribe(() => FileName = null);
-
-            SetCommand = new ReactiveCommand()
-                .WithSubscribe(() =>
-                {
-                    var folder = DialogService.PickFile(Path.GetDirectoryName(FileName), "");
-
-                    if (folder != null)
-                        FileName = folder;
-                });
         }
 
         public string FileName
@@ -45,8 +33,5 @@ namespace Captura.ViewModels
 
         public SoundKind SoundKind { get; }
 
-        public ICommand ResetCommand { get; }
-
-        public ICommand SetCommand { get; }
     }
 }
