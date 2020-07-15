@@ -142,16 +142,6 @@ namespace Captura
             return true;
         }
 
-        public static void Bind(this FrameworkElement Control, DependencyProperty DependencyProperty, IReactiveProperty Property)
-        {
-            Control.SetBinding(DependencyProperty,
-                new Binding(nameof(Property.Value))
-                {
-                    Source = Property,
-                    Mode = BindingMode.TwoWay
-                });
-        }
-
         public static void BindOne<T>(this FrameworkElement Control, DependencyProperty DependencyProperty, IReadOnlyReactiveProperty<T> Property)
         {
             Control.SetBinding(DependencyProperty,

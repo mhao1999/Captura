@@ -12,7 +12,6 @@ namespace Captura.ViewModels
             Binder.BindSingleton<RecordingViewModel>();
             Binder.BindSingleton<MainViewModel>();
             Binder.BindSingleton<HotkeysViewModel>();
-            Binder.BindSingleton<ViewConditionsModel>();
 
             Binder.BindSingleton<VideoSourcesViewModel>();
             Binder.BindSingleton<VideoWritersViewModel>();

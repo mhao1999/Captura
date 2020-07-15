@@ -54,11 +54,7 @@ namespace Captura.ViewModels
             [InkCanvasEditingMode.EraseByStroke] = "Stroke Eraser"
         };
 
-        public IReactiveProperty<InkCanvasEditingMode> SelectedTool { get; } = new ReactivePropertySlim<InkCanvasEditingMode>(Tools.Keys.First());
-
-        public IReactiveProperty<int> BrushSize { get; } = new ReactiveProperty<int>(10);
-
-        public IReactiveProperty<Color> BrushColor { get; } = new ReactiveProperty<Color>(Color.FromRgb(27, 27, 27));
+        public InkCanvasEditingMode SelectedTool { get; } = Tools.Keys.First();
 
         public int Left
         {

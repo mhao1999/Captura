@@ -24,39 +24,7 @@ namespace Captura
             // Prevent Closing by User
             Closing += (S, E) => E.Cancel = true;
 
-            ViewModel
-                .BrushColor
-                .Subscribe(M => InkCanvas.DefaultDrawingAttributes.Color = M);
-
-            ViewModel
-                .BrushSize
-                .Subscribe(M => InkCanvas.DefaultDrawingAttributes.Height = InkCanvas.DefaultDrawingAttributes.Width = M);
-
-            ViewModel
-                .SelectedTool
-                .Subscribe(OnToolChange);
-
-            ViewModel
-                .ClearAllDrawingsCommand
-                .Subscribe(() => InkCanvas.Strokes.Clear());
-
             InkCanvas.DefaultDrawingAttributes.FitToCurve = true;
-        }
-
-        void OnToolChange(InkCanvasEditingMode Tool)
-        {
-            InkCanvas.EditingMode = Tool;
-
-            if (Tool == InkCanvasEditingMode.Ink)
-            {
-                InkCanvas.UseCustomCursor = true;
-                InkCanvas.Cursor = Cursors.Pen;
-            }
-            else InkCanvas.UseCustomCursor = false;
-
-            InkCanvas.Background = new SolidColorBrush(Tool == InkCanvasEditingMode.None
-                ? Colors.Transparent
-                : Color.FromArgb(1, 0, 0, 0));
         }
 
         // Prevent Maximizing
