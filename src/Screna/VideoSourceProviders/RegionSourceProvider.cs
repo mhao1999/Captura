@@ -6,14 +6,11 @@ namespace Captura.Video
     public class RegionSourceProvider : VideoSourceProviderBase
     {
         readonly IRegionProvider _regionProvider;
-        readonly IVideoSourcePicker _videoSourcePicker;
 
         public RegionSourceProvider(
             IRegionProvider RegionProvider,
-            IVideoSourcePicker VideoSourcePicker,
             IIconSet Icons) : base()
         {
-            _videoSourcePicker = VideoSourcePicker;
             _regionProvider = RegionProvider;
 
             Source = RegionProvider.VideoSource;
