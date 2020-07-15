@@ -10,6 +10,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <ApplicationIcon>Images\Captura.ico</ApplicationIcon>
     <Prefer32Bit>false</Prefer32Bit>
+    <Platforms>AnyCPU;x86</Platforms>
   </PropertyGroup>
   <ItemGroup>
     <Resource Include="Images\Logo.png" />
