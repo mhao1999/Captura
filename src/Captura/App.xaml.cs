@@ -7,7 +7,6 @@ using System.Windows.Threading;
 using Captura.Models;
 using Captura.MouseKeyHook;
 using Captura.ViewModels;
-using Captura.Views;
 using CommandLine;
 
 namespace Captura

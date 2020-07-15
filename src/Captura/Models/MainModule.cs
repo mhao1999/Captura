@@ -16,7 +16,6 @@ namespace Captura
             Binder.Bind<IRegionProvider, RegionSelectorProvider>();
             Binder.Bind<ISystemTray, SystemTray>();
             Binder.Bind<IPreviewWindow, PreviewWindowService>();
-            Binder.Bind<IVideoSourcePicker, VideoSourcePicker>();
             Binder.Bind<IAudioPlayer, AudioPlayer>();
 
             Binder.Bind<IHotkeyListener, HotkeyListener>();

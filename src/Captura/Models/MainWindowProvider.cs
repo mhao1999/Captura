@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Windows;
-using Captura.Views;
 
 namespace Captura.Models
 {
@@ -33,11 +32,7 @@ namespace Captura.Models
 
         public void TrimMedia(string FileName)
         {
-            var win = new TrimmerWindow();
 
-            win.Open(FileName);
-
-            win.ShowAndFocus();
         }
 
     }

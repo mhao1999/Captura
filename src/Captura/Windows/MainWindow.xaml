@@ -116,19 +116,8 @@
                   IsExpanded="{Binding Settings.UI.Expanded}">
             <Expander.Header>
                 <Grid>
-                    <Border CornerRadius="15,15,25,25"
-                            BorderThickness="0"
-                            Margin="0,2,0,0"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Top"
-                            Width="70"
-                            Height="33"
-                            Background="{DynamicResource ButtonBackgroundHover}"/>
-                    <DockPanel VerticalAlignment="Center">
-                        <local:CollapsedBar DockPanel.Dock="Bottom"
-                                            Margin="-30,0,0,0"/>
 
-                        <local:PauseButton/>
+                    <DockPanel VerticalAlignment="Center">
                         <local:ModernButton ToolTip="录制 | 停止"
                                             Command="{Binding RecordingViewModel.RecordCommand, Source={StaticResource ServiceLocator}}"
                                             Foreground="#ee2c2c"
