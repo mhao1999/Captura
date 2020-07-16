@@ -1,7 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
 using Captura.Hotkeys;
-using Reactive.Bindings;
 
 namespace Captura.ViewModels
 {

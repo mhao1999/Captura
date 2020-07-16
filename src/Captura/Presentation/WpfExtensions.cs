@@ -10,7 +10,6 @@ using System.Windows.Media.Imaging;
 using Captura.Video;
 using Captura.ViewModels;
 using Microsoft.Win32;
-using Reactive.Bindings;
 using Color = System.Windows.Media.Color;
 using ColorConverter = System.Windows.Media.ColorConverter;
 using DColor = System.Drawing.Color;

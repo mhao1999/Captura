@@ -69,8 +69,6 @@ namespace Captura.Video
                         }
                         catch { return; }
 
-                        //win.WinFormsHost.Visibility = Visibility.Visible;
-                        //win.DisplayImage.Image = drawingFrame.Bitmap;
                         break;
 
                     case Texture2DFrame texture2DFrame:

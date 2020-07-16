@@ -4,7 +4,6 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Controls;
 using System.Windows.Input;
-using Reactive.Bindings;
 using Color = System.Windows.Media.Color;
 
 // ReSharper disable MemberCanBePrivate.Global

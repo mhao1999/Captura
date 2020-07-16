@@ -2,7 +2,6 @@
 using System.Windows.Input;
 using Captura.Audio;
 using Captura.Models;
-using Reactive.Bindings;
 
 namespace Captura.ViewModels
 {

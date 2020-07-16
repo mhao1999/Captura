@@ -2,15 +2,11 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reactive.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Captura.Audio;
 using Captura.Models;
 using Captura.Video;
-using Captura.Webcam;
-using Reactive.Bindings;
-using Reactive.Bindings.Extensions;
 
 namespace Captura.ViewModels
 {
