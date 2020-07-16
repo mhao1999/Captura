@@ -10,16 +10,12 @@ namespace Captura.ViewModels
     {
         public ReadOnlyObservableCollection<IRecentItem> Items { get; }
 
-        public ICommand ClearCommand { get; }
-
         public RecentViewModel(Settings Settings,
             IRecentList Recent)
             : base(Settings)
         {
             Items = Recent.Items;
 
-            ClearCommand = new ReactiveCommand()
-                .WithSubscribe(Recent.Clear);
         }
     }
 }

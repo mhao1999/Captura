@@ -141,16 +141,5 @@ namespace Captura
 
             return true;
         }
-
-        public static void BindOne<T>(this FrameworkElement Control, DependencyProperty DependencyProperty, IReadOnlyReactiveProperty<T> Property)
-        {
-            Control.SetBinding(DependencyProperty,
-                new Binding(nameof(Property.Value))
-                {
-                    Source = Property,
-                    Mode = BindingMode.OneWay
-                });
-        }
-
     }
 }

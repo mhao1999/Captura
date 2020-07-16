@@ -27,31 +27,13 @@ namespace Captura.ViewModels
 
         public RegionSelectorViewModel()
         {
-            MoveLeftCommand = new ReactiveCommand()
-                .WithSubscribe(() => Left -= KeyMoveDelta);
-            MoveRightCommand = new ReactiveCommand()
-                .WithSubscribe(() => Left += KeyMoveDelta);
-            MoveUpCommand = new ReactiveCommand()
-                .WithSubscribe(() => Top -= KeyMoveDelta);
-            MoveDownCommand = new ReactiveCommand()
-                .WithSubscribe(() => Top += KeyMoveDelta);
 
-            IncreaseWidthCommand = new ReactiveCommand()
-                .WithSubscribe(() => Width += KeyMoveDelta);
-            DecreaseWidthCommand = new ReactiveCommand()
-                .WithSubscribe(() => Width -= KeyMoveDelta);
-            IncreaseHeightCommand = new ReactiveCommand()
-                .WithSubscribe(() => Height += KeyMoveDelta);
-            DecreaseHeightCommand = new ReactiveCommand()
-                .WithSubscribe(() => Height -= KeyMoveDelta);
         }
 
         public static Dictionary<InkCanvasEditingMode, string> Tools { get; } = new Dictionary<InkCanvasEditingMode, string>
         {
             [InkCanvasEditingMode.None] = "Pointer",
-            [InkCanvasEditingMode.Ink] = "Pencil",
-            [InkCanvasEditingMode.EraseByPoint] = "Eraser",
-            [InkCanvasEditingMode.EraseByStroke] = "Stroke Eraser"
+
         };
 
         public InkCanvasEditingMode SelectedTool { get; } = Tools.Keys.First();
@@ -198,6 +180,5 @@ namespace Captura.ViewModels
         public ICommand IncreaseHeightCommand { get; }
         public ICommand DecreaseHeightCommand { get; }
 
-        public ReactiveCommand ClearAllDrawingsCommand { get; } = new ReactiveCommand();
     }
 }

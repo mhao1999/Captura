@@ -35,18 +35,6 @@ namespace Captura.Models
 
             RefreshCommand = new DelegateCommand(Refresh);
 
-            SelectedMicPeakLevel = Observable.Interval(TimeSpan.FromMilliseconds(50))
-                .Where(M => ListeningPeakLevel)
-                .ObserveOnUIDispatcher()
-                .Select(M => SelectedMicrophone?.PeakLevel ?? 0)
-                .ToReadOnlyReactivePropertySlim();
-
-            SelectedSpeakerPeakLevel = Observable.Interval(TimeSpan.FromMilliseconds(50))
-                .Where(M => ListeningPeakLevel)
-                .ObserveOnUIDispatcher()
-                .Select(M => SelectedSpeaker?.PeakLevel ?? 0)
-                .ToReadOnlyReactivePropertySlim();
-
             _refreshObservable = Observable.FromEvent(M => AudioSource.DevicesUpdated += M,
                 M => AudioSource.DevicesUpdated -= M)
                 .Throttle(TimeSpan.FromSeconds(0.5));
@@ -183,8 +171,5 @@ namespace Captura.Models
             }
         }
 
-        public IReadOnlyReactiveProperty<double> SelectedMicPeakLevel { get; }
-
-        public IReadOnlyReactiveProperty<double> SelectedSpeakerPeakLevel { get; }
     }
 }

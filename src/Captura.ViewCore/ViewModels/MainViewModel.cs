@@ -19,12 +19,8 @@ namespace Captura.ViewModels
         readonly RememberByName _rememberByName;
         readonly IDialogService _dialogService;
 
-        public ICommand ShowPreviewCommand { get; }
         public ICommand OpenOutputFolderCommand { get; }
         public ICommand SelectOutputFolderCommand { get; }
-        public ICommand TrayLeftClickCommand { get; }
-
-        public IReadOnlyReactiveProperty<string> OutFolderDisplay { get; }
 
         public MainViewModel(Settings Settings,
             HotKeyManager HotKeyManager,
@@ -36,14 +32,6 @@ namespace Captura.ViewModels
             _dialogService = DialogService;
             _rememberByName = RememberByName;
 
-            ShowPreviewCommand = new ReactiveCommand()
-                .WithSubscribe(PreviewWindow.Show);
-
-            #region Commands
-
-            TrayLeftClickCommand = new ReactiveCommand()
-                .WithSubscribe(() => HotKeyManager.FakeHotkey(Settings.Tray.LeftClickAction));
-            #endregion
         }
 
         public void Init(bool Persist, bool Remembered)

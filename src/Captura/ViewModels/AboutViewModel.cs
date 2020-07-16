@@ -8,8 +8,6 @@ namespace Captura.ViewModels
     // ReSharper disable once ClassNeverInstantiated.Global
     public class AboutViewModel : ViewModelBase
     {
-        public ICommand HyperlinkCommand { get; }
-
         public static Version Version { get; }
 
         public string AppVersion { get; }
@@ -23,8 +21,6 @@ namespace Captura.ViewModels
         {
             AppVersion = "v" + Version.ToString(3);
 
-            HyperlinkCommand = new ReactiveCommand<string>()
-                .WithSubscribe(M => Process.Start(M));
         }
     }
 }

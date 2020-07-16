@@ -46,7 +46,6 @@
                         IconSource="{Binding RecordingViewModel.RecorderState.Value, Source={StaticResource ServiceLocator}, Converter={StaticResource StateToTrayIconSourceConverter}}"
                         ToolTipText="Captura"
                         MenuActivation="RightClick"
-                        LeftClickCommand="{Binding TrayLeftClickCommand}"
                         TrayMouseDoubleClick="SystemTray_TrayMouseDoubleClick">
             <tb:TaskbarIcon.ContextMenu>
                 <ContextMenu>
