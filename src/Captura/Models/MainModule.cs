@@ -15,7 +15,6 @@ namespace Captura
             // Use singleton to ensure the same instance is used every time.
             Binder.Bind<IRegionProvider, RegionSelectorProvider>();
             Binder.Bind<ISystemTray, SystemTray>();
-            Binder.Bind<IPreviewWindow, PreviewWindowService>();
             Binder.Bind<IAudioPlayer, AudioPlayer>();
 
             Binder.Bind<IHotkeyListener, HotkeyListener>();
