@@ -26,6 +26,7 @@ namespace Captura.ViewModels
         readonly IAudioPlayer _audioPlayer;
         readonly IRecentList _recentList;
         readonly AudioSourceViewModel _audioSourceViewModel;
+        public RecordingModel RecordingModel { get; set; } = null;
 
         readonly SyncContextManager _syncContext = new SyncContextManager();
 
@@ -51,11 +52,9 @@ namespace Captura.ViewModels
             _mainWindow = MainWindow;
             _audioPlayer = AudioPlayer;
             _recentList = RecentList;
-            _audioSourceViewModel = AudioSourceViewModel;    
+            _audioSourceViewModel = AudioSourceViewModel;
 
-            RecorderState = RecordingModel
-                .ObserveProperty(M => M.RecorderState)
-                .ToReadOnlyReactivePropertySlim();
+            this.RecordingModel = RecordingModel;
             
             TimerModel.DurationElapsed += () =>
             {
@@ -78,7 +77,7 @@ namespace Captura.ViewModels
 
         public async void OnRecordExecute()
         {
-            if (RecorderState.Value == Models.RecorderState.NotRecording)
+            if (RecorderState == Models.RecorderState.NotRecording)
             {
                 StartRecording();
             }
@@ -241,11 +240,16 @@ namespace Captura.ViewModels
             else _audioPlayer.Play(SoundKind.Error);
         }
 
-        public IReadOnlyReactiveProperty<RecorderState> RecorderState { get; }
+        public RecorderState RecorderState
+        {
+            get {
+                return this.RecordingModel.RecorderState;
+            }
+        }
 
         public bool CanExit()
         {
-            if (RecorderState.Value == Models.RecorderState.Recording)
+            if (RecorderState == Models.RecorderState.Recording)
             {
                     return false;
             }

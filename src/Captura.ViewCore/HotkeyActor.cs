@@ -42,7 +42,7 @@ namespace Captura.ViewModels
 
                 case ServiceName.ToggleRegionPicker:
                     // Stop any recording in progress
-                    if (_recordingViewModel.RecorderState.Value != RecorderState.NotRecording)
+                    if (_recordingViewModel.RecorderState != RecorderState.NotRecording)
                     {
                         _recordingViewModel.RecordCommand.Execute(null);
                     }
