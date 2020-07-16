@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Input;
 using Captura.Models;
+using Captura.ViewModels;
 
 namespace Captura
 {
@@ -117,5 +118,19 @@ namespace Captura
         void HideButton_Click(object Sender, RoutedEventArgs Args) => Hide();
 
         void ShowMainWindow(object Sender, RoutedEventArgs E) => this.ShowAndFocus();
+
+        private void Record_Click(object sender, RoutedEventArgs e)
+        {
+            RecordingViewModel rvm = ServiceProvider.Get<RecordingViewModel>();
+
+            rvm.OnRecordExecute();
+        }
+
+        private void Pause_Click(object sender, RoutedEventArgs e)
+        {
+            RecordingViewModel rvm = ServiceProvider.Get<RecordingViewModel>();
+
+            rvm.OnRecordPause();
+        }
     }
 }

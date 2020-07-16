@@ -51,53 +51,7 @@ namespace Captura.ViewModels
             _mainWindow = MainWindow;
             _audioPlayer = AudioPlayer;
             _recentList = RecentList;
-            _audioSourceViewModel = AudioSourceViewModel;
-
-            var hasAudio = new[]
-            {
-                Settings
-                    .Audio
-                    .ObserveProperty(M => M.RecordMicrophone),
-                Settings
-                    .Audio
-                    .ObserveProperty(M => M.RecordSpeaker)
-            }
-            .CombineLatest(M => M[0] || M[1]);            
-
-            RecordCommand = new[]
-                {
-                    hasAudio,
-                    Settings
-                        .Video
-                        .ObserveProperty(M => M.RecorderMode)
-                        .Select(M => M == RecorderMode.Steps),
-                }
-                .CombineLatest(M =>
-                {
-                    var audioEnabled = M[0];
-                    var stepsMode = M[1];
-
-                    return true;
-                })
-                .ToReactiveCommand()
-                .WithSubscribe(OnRecordExecute);
-
-            PauseCommand = new[]
-                {
-                    TimerModel
-                        .ObserveProperty(M => M.Waiting),
-                    RecordingModel
-                        .ObserveProperty(M => M.RecorderState)
-                        .Select(M => M != Models.RecorderState.NotRecording)
-                }
-                .CombineLatest(M => !M[0] && M[1])
-                .ToReactiveCommand()
-                .WithSubscribe(() =>
-                {
-                    _audioPlayer.Play(SoundKind.Pause);
-
-                    RecordingModel.OnPauseExecute();
-                });
+            _audioSourceViewModel = AudioSourceViewModel;    
 
             RecorderState = RecordingModel
                 .ObserveProperty(M => M.RecorderState)
@@ -109,7 +63,20 @@ namespace Captura.ViewModels
             };
         }
 
-        async void OnRecordExecute()
+        /// <summary>
+        /// 暂停录制
+        /// </summary>
+        public void OnRecordPause()
+        {
+            if (_timerModel.Waiting == false && _recordingModel.RecorderState != Models.RecorderState.NotRecording)
+            {
+                _audioPlayer.Play(SoundKind.Pause);
+
+                _recordingModel.OnPauseExecute();
+            }
+        }
+
+        public async void OnRecordExecute()
         {
             if (RecorderState.Value == Models.RecorderState.NotRecording)
             {

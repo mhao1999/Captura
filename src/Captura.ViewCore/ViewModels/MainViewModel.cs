@@ -44,30 +44,6 @@ namespace Captura.ViewModels
             }
         }
 
-        void OpenOutputFolder()
-        {
-            Process.Start(Settings.GetOutputPath());
-        }
-
-        void SelectOutputFolder()
-        {
-            string currentFolder = null;
-
-            try
-            {
-                currentFolder = Settings.GetOutputPath();
-            }
-            catch
-            {
-                // Error can happen if current folder is inaccessible
-            }
-
-            var folder = _dialogService.PickFolder(currentFolder, "选择输出目录");
-
-            if (folder != null)
-                Settings.OutPath = folder;
-        }
-
         public void Dispose()
         {
             // Remember things if not console.
